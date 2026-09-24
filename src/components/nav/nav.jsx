@@ -1,60 +1,53 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Products', href: '#products' },
-  { label: 'Payment', href: '#payment' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Women', href: '#women' },
+  { label: 'Men', href: '#men' },
+  { label: 'Kids', href: '#kids' },
+  { label: 'Unstitched', href: '#unstitched' },
+  { label: 'New In', href: '#new-in' },
+  { label: 'Sale', href: '#sale' },
 ]
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [activeLink, setActiveLink] = useState('Home')
 
   return (
-    <header className="w-full border-b border-gray-200 bg-white sticky top-0 z-50">
-      {/* Top announcement strip - matches Zellbury's thin black bar */}
-      <div className="bg-black text-white text-center text-[11px] sm:text-xs tracking-wide py-1.5 px-4">
-        Free Delivery on Orders Over Rs. 3,000
+    <header className="w-full border-b border-stone-200 bg-[#fbfaf7] sticky top-0 z-50 text-stone-900">
+      <div className="bg-stone-900 px-4 py-2 text-center text-[10px] font-medium uppercase tracking-[0.2em] text-white sm:text-[11px]">
+        Free delivery on orders over Rs. 3,000
       </div>
 
-      <nav className="max-w-7xl mx-auto flex items-center justify-between px-5 sm:px-8 py-4">
-        {/* Logo */}
-        <a href="#home" className="flex items-center gap-2 shrink-0">
-          <span className="flex items-center justify-center w-9 h-9 rounded-full border border-black">
+      <nav className="mx-auto flex max-w-[1440px] items-center justify-between px-5 py-5 sm:px-8 lg:px-12">
+        <button
+          className="md:hidden"
+          aria-label="Toggle menu"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+            {isOpen ? <path d="M6 6l12 12M18 6l-12 12" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+          </svg>
+        </button>
+
+        <a href="#home" className="flex items-center gap-2 md:absolute md:left-1/2 md:-translate-x-1/2">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-stone-900">
             <svg
               viewBox="0 0 24 24"
-              className="w-4 h-4"
+              className="h-4 w-4"
               fill="none"
-              stroke="black"
+              stroke="currentColor"
               strokeWidth="1.5"
             >
               <path d="M9 3h6l1 3-2 2 2 1-2 12H8L6 9l2-1-2-2 3-3z" />
             </svg>
           </span>
-          <span className="font-serif text-xl sm:text-2xl tracking-wide text-black leading-none">
-            Ladies Dresser
+          <span className="font-serif text-xl tracking-[0.18em] text-stone-900 sm:text-2xl">
+            Dresser
           </span>
         </a>
 
-        {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-10">
-          {navLinks.map((link) => (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                className="text-sm tracking-wide text-gray-800 hover:text-black relative
-                           after:content-[''] after:absolute after:left-0 after:-bottom-1
-                           after:w-0 after:h-[1.5px] after:bg-black after:transition-all
-                           hover:after:w-full"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* Right icons */}
-        <div className="hidden md:flex items-center gap-5">
+        <div className="ml-auto flex items-center gap-5">
           <button aria-label="Search" className="text-black hover:opacity-60 transition">
             <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.7">
               <circle cx="11" cy="11" r="7" />
@@ -79,33 +72,43 @@ const Nav = () => {
             </span>
           </button>
         </div>
-
-        {/* Mobile menu button */}
-        <button
-          className="md:hidden text-black"
-          aria-label="Toggle menu"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.7">
-            {isOpen ? (
-              <path d="M6 6l12 12M18 6l-12 12" />
-            ) : (
-              <path d="M4 7h16M4 12h16M4 17h16" />
-            )}
-          </svg>
-        </button>
       </nav>
+
+      <div className="hidden border-t border-stone-200 md:block">
+        <ul className="mx-auto flex max-w-[1000px] items-center justify-center gap-8 px-6 py-3 lg:gap-12">
+          {navLinks.map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                onClick={() => setActiveLink(link.label)}
+                className={`relative text-[11px] font-medium uppercase tracking-[0.16em] after:absolute after:-bottom-2 after:left-0 after:h-px after:bg-stone-900 after:transition-all hover:after:w-full ${
+                  activeLink === link.label ? 'text-stone-900 after:w-full' : 'text-stone-600 after:w-0'
+                }`}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden border-t border-gray-200 bg-white px-5 py-4">
+        <div className="md:hidden border-t border-stone-200 bg-[#fbfaf7] px-5 py-5">
           <ul className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <li key={link.label}>
                 <a
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block text-sm tracking-wide text-gray-800 hover:text-black"
+                  onClick={() => {
+                    setActiveLink(link.label)
+                    setIsOpen(false)
+                  }}
+                  className={`block text-sm tracking-wide hover:text-black ${
+                    activeLink === link.label
+                      ? 'text-black font-medium'
+                      : 'text-gray-800'
+                  }`}
                 >
                   {link.label}
                 </a>
