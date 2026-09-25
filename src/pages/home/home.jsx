@@ -4,6 +4,7 @@ import FirstSectionSlider from '../../components/homeComponets/firstSectionSlide
 import Products from '../../components/homeComponets/secondSectionProducts.jsx'
 import ThirdSectionSlider from '../../components/homeComponets/thirdSectionSlider.jsx'
 import FourthSection from '../../components/homeComponets/FourthSection.jsx'
+import Footer from '../../components/homeComponets/footer.jsx'
 
 const home = () => {
   return (
@@ -13,6 +14,7 @@ const home = () => {
       <Products/>
       <ThirdSectionSlider />
       <FourthSection />
+      <Footer />
     </div>
   )
 }
