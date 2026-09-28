@@ -111,12 +111,35 @@ function highlightMatch(name, query) {
 // ProductCard — used by the results rail below the search bar
 // ---------------------------------------------------------------------------
 
-const ProductCard = ({ product }) => (
+const ProductCard = ({ product }) => {
+    const image = getProductImage(product)
+    const imageHover = getProductImage({ ...product, name: `${product.name} alternate` })
+    const parsePrice = (value) => Number(String(value).replace(/[^0-9.]/g, '')) || 0
+    const detailProduct = {
+        ...product,
+        id: product.id ?? product.name,
+        categoryLabel: product.categoryLabel ?? product.category,
+        price: parsePrice(product.salePrice ?? product.price),
+        oldPrice: product.salePrice ? parsePrice(product.price) : product.oldPrice,
+        image,
+        imageHover,
+        gallery: [
+            { image, alt: `${product.name} front view` },
+            { image: imageHover, alt: `${product.name} alternate view` },
+        ],
+        short: product.short ?? `${product.name} from our ${product.category} collection.`,
+        stock: product.stock ?? 'In stock, ships in 24 hours',
+    }
+    const productSlug = String(product.id ?? product.name)
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+
+    return (
     <article className="group overflow-hidden rounded-2xl border border-stone-200 bg-white transition-shadow hover:shadow-lg">
-        <Link to={`/product/${product.id}`} className="block">
+        <Link to={`/product/search-${productSlug}`} state={{ product: detailProduct }} className="block">
             <div className="relative aspect-[3/4] overflow-hidden bg-stone-100">
                 <img
-                    src={getProductImage(product)}
+                    src={image}
                     alt={product.name}
                     loading="lazy"
                     onError={(e) => {
@@ -125,7 +148,7 @@ const ProductCard = ({ product }) => (
                     className="absolute inset-0 h-full w-full object-cover opacity-100 transition-opacity duration-500 ease-in-out group-hover:opacity-0"
                 />
                 <img
-                    src={getProductImage({ ...product, name: `${product.name} alternate` })}
+                    src={imageHover}
                     alt=""
                     aria-hidden="true"
                     loading="lazy"
@@ -150,7 +173,8 @@ const ProductCard = ({ product }) => (
             </div>
         </Link>
     </article>
-)
+    )
+}
 
 // ---------------------------------------------------------------------------
 // SearchBox

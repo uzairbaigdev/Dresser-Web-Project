@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import Nav from '../../components/nav/nav.jsx'
 import { productCatalog, getProductById } from '../../data/products.js'
 
@@ -20,7 +20,8 @@ const btn = 'rounded-full px-6 py-3.5 text-sm font-medium transition duration-20
 
 function ProductPage() {
   const { productId } = useParams()
-  const product = getProductById(productId) || productCatalog[0]
+  const location = useLocation()
+  const product = location.state?.product || getProductById(productId) || productCatalog[0]
   const [selectedImage, setSelectedImage] = useState(0)
   const [selectedColor, setSelectedColor] = useState(0)
   const [quantity, setQuantity] = useState(1)
