@@ -103,7 +103,8 @@ const SLIDES = [
 
 const NAV_LINKS = [
   { label: 'Home', to: '/', icon: IconHome },
-  { label: 'Shop', to: '/shop', icon: IconAbout },
+  { label: 'About', to: '/about', icon: IconAbout },
+  { label: 'Shop', to: '/shop', icon: IconProduct },
   { label: 'Search', to: '/search', icon: IconProduct },
   { label: 'Contact', to: '/contact', icon: IconContact },
 ]
