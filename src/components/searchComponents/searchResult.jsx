@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 
 // ---------------------------------------------------------------------------
 // Icons — thin-stroke outlines, consistent with the SearchBox icon set.
@@ -218,53 +219,47 @@ const ProductCard = ({ product, query, isWishlisted, onToggleWishlist, onSelect 
 
     return (
         <div className="group">
-        <div className="relative">
-            <button
-                type="button"
-                onClick={() => onSelect(product)}
-                className="relative block w-full aspect-[3/4] overflow-hidden rounded-2xl bg-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2"
-            >
-                <img
-                    src={getProductImage(product)}
-                    alt={name}
-                    loading="lazy"
-                    onError={(e) => {
-                        // If the curated photo ever fails to load, fall back to a
-                        // backup image rather than leaving an empty box.
-                        e.currentTarget.onerror = null
-                        e.currentTarget.src = getFallbackImage(product)
+            <div className="relative">
+                <Link to={`/product/${product.id}`} className="relative block w-full aspect-[3/4] overflow-hidden rounded-2xl bg-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2">
+                    <img
+                        src={getProductImage(product)}
+                        alt={name}
+                        loading="lazy"
+                        onError={(e) => {
+                            e.currentTarget.onerror = null
+                            e.currentTarget.src = getFallbackImage(product)
+                        }}
+                        className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                    />
+
+                    <div className="absolute top-3 left-3 flex flex-col items-start gap-1.5">
+                        {isNew && (
+                            <span className="bg-white/95 text-neutral-900 text-xs px-2.5 py-1 rounded-full">New</span>
+                        )}
+                        {salePrice && (
+                            <span className="bg-neutral-900 text-white text-xs px-2.5 py-1 rounded-full">Sale</span>
+                        )}
+                    </div>
+                </Link>
+
+                <button
+                    type="button"
+                    onClick={(e) => {
+                        e.stopPropagation()
+                        onToggleWishlist()
                     }}
-                    className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
-                />
-
-                <div className="absolute top-3 left-3 flex flex-col items-start gap-1.5">
-                    {isNew && (
-                        <span className="bg-white/95 text-neutral-900 text-xs px-2.5 py-1 rounded-full">New</span>
-                    )}
-                    {salePrice && (
-                        <span className="bg-neutral-900 text-white text-xs px-2.5 py-1 rounded-full">Sale</span>
-                    )}
-                </div>
-            </button>
-
-            <button
-                type="button"
-                onClick={(e) => {
-                    e.stopPropagation()
-                    onToggleWishlist()
-                }}
-                aria-label={isWishlisted ? `Remove ${name} from wishlist` : `Add ${name} to wishlist`}
-                aria-pressed={isWishlisted}
-                className="absolute top-3 right-3 flex items-center justify-center w-8 h-8 rounded-full bg-white/95 text-neutral-700 hover:text-neutral-900 transition-transform duration-150 hover:scale-105"
-            >
-                <HeartIcon filled={isWishlisted} />
-            </button>
-        </div>
+                    aria-label={isWishlisted ? `Remove ${name} from wishlist` : `Add ${name} to wishlist`}
+                    aria-pressed={isWishlisted}
+                    className="absolute top-3 right-3 flex items-center justify-center w-8 h-8 rounded-full bg-white/95 text-neutral-700 hover:text-neutral-900 transition-transform duration-150 hover:scale-105"
+                >
+                    <HeartIcon filled={isWishlisted} />
+                </button>
+            </div>
 
             <div className="mt-2">
-                <button type="button" onClick={() => onSelect(product)} className="text-left focus:outline-none">
+                <Link to={`/product/${product.id}`} onClick={() => onSelect(product)} className="text-left focus:outline-none">
                     <p className="text-sm text-neutral-900 leading-snug">{highlightMatch(name, query)}</p>
-                </button>
+                </Link>
                 <p className="text-xs text-neutral-400 mt-0.5">{category}</p>
 
                 <div className="flex items-center gap-1 mt-1.5">

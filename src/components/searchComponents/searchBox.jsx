@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo, useId } from 'react'
+import { Link } from 'react-router-dom'
 import { DRESS_TYPES } from '../shopComponents/productsTypes.jsx'
 
 // ---------------------------------------------------------------------------
@@ -112,7 +113,7 @@ function highlightMatch(name, query) {
 
 const ProductCard = ({ product }) => (
     <article className="group overflow-hidden rounded-2xl border border-stone-200 bg-white transition-shadow hover:shadow-lg">
-        <a href="#" className="block">
+        <Link to={`/product/${product.id}`} className="block">
             <div className="relative aspect-[3/4] overflow-hidden bg-stone-100">
                 <img
                     src={getProductImage(product)}
@@ -147,7 +148,7 @@ const ProductCard = ({ product }) => (
                 <h3 className="mt-1 text-sm font-medium leading-snug text-stone-900">{product.name}</h3>
                 <span className="mt-1.5 block text-sm font-semibold text-stone-900">{product.price}</span>
             </div>
-        </a>
+        </Link>
     </article>
 )
 

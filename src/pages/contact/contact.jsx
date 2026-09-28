@@ -219,19 +219,19 @@ const SECTION = "py-20 sm:py-28";
 
 const BUTTON_VARIANTS = {
   primary:
-    "bg-[#1f1d1b] text-[#faf7f2] shadow-lg shadow-black/10 hover:-translate-y-0.5 hover:bg-[#9a7640] hover:shadow-xl focus-visible:ring-offset-[#faf7f2]",
+    "bg-black text-white shadow-lg shadow-black/10 hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-xl focus-visible:ring-offset-white",
   outline:
-    "border border-[#1f1d1b]/25 text-[#1f1d1b] hover:-translate-y-0.5 hover:border-[#1f1d1b] hover:bg-[#1f1d1b] hover:text-[#faf7f2] focus-visible:ring-offset-[#faf7f2]",
+    "border border-black/20 text-black hover:-translate-y-0.5 hover:border-black hover:bg-black hover:text-white focus-visible:ring-offset-white",
   gold:
-    "bg-[#c9a469] text-[#1f1d1b] shadow-lg shadow-black/20 hover:-translate-y-0.5 hover:bg-[#e2c48f] hover:shadow-xl focus-visible:ring-offset-[#1f1d1b]",
+    "bg-black text-white shadow-lg shadow-black/15 hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-xl focus-visible:ring-offset-black",
   ghost:
-    "border border-white/40 text-white backdrop-blur-sm hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#1f1d1b] focus-visible:ring-offset-[#1f1d1b]",
+    "border border-white/40 text-white backdrop-blur-sm hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-black focus-visible:ring-offset-black",
 };
 
 /** Polymorphic button: renders a router Link, an anchor, or a <button>. */
 const Button = ({ as: Tag = "button", variant = "primary", arrow = true, icon, className = "", children, ...props }) => (
   <Tag
-    className={`group inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a469] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0 ${BUTTON_VARIANTS[variant]} ${className}`}
+    className={`group inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0 ${BUTTON_VARIANTS[variant]} ${className}`}
     {...props}
   >
     {icon && <Icon name={icon} className="h-4 w-4" />}
@@ -241,8 +241,8 @@ const Button = ({ as: Tag = "button", variant = "primary", arrow = true, icon, c
 );
 
 const HEADING_TONES = {
-  light: { eyebrow: "text-[#9a7640]", title: "text-[#1f1d1b]", text: "text-stone-600" },
-  dark: { eyebrow: "text-[#d4b483]", title: "text-[#faf7f2]", text: "text-stone-300" },
+  light: { eyebrow: "text-black", title: "text-black", text: "text-stone-600" },
+  dark: { eyebrow: "text-white/70", title: "text-white", text: "text-stone-300" },
 };
 
 const SectionHeading = ({ id, eyebrow, title, description, tone = "light", align = "center" }) => {
@@ -364,18 +364,18 @@ const DETAIL_ROWS = [
 ];
 
 const Hero = () => (
-  <section aria-labelledby="contact-hero-title" className="relative isolate overflow-hidden bg-[#1f1d1b]">
+  <section aria-labelledby="contact-hero-title" className="relative isolate overflow-hidden bg-black">
     <div className="absolute inset-0 -z-10" aria-hidden="true">
       <Photo id={PHOTOS.hero} alt="" width={2000} />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1f1d1b]/95 via-[#1f1d1b]/75 to-[#1f1d1b]/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/50" />
     </div>
 
     <div className={`${CONTAINER} grid items-center gap-12 py-24 sm:py-32 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16`}>
       <div>
-        <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[#d4b483]">Contact Dresser</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.32em] text-white/70">Contact Dresser</p>
         <h1
           id="contact-hero-title"
-          className="dr-display mt-6 text-5xl font-semibold leading-[1.05] text-[#faf7f2] sm:text-6xl lg:text-7xl"
+          className="dr-display mt-6 text-5xl font-semibold leading-[1.05] text-white sm:text-6xl lg:text-7xl"
         >
           Let’s create a home you’ll love coming back to.
         </h1>
@@ -396,16 +396,16 @@ const Hero = () => (
         <ul className="mt-12 flex flex-col gap-3 text-sm text-stone-200 sm:flex-row sm:flex-wrap sm:gap-x-8">
           {["Replies within one business day", "Free design consultations", "Showroom open 7 days"].map((item) => (
             <li key={item} className="flex items-center gap-2">
-              <Icon name="check" className="h-4 w-4 text-[#d4b483]" />
+              <Icon name="check" className="h-4 w-4 text-white" />
               {item}
             </li>
           ))}
         </ul>
       </div>
 
-      <div className="rounded-3xl bg-[#faf7f2] p-6 shadow-2xl shadow-black/30 sm:p-8">
+      <div className="rounded-3xl bg-white p-6 shadow-2xl shadow-black/30 sm:p-8">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <h2 className="dr-display text-3xl font-semibold text-[#1f1d1b]">Contact details</h2>
+          <h2 className="dr-display text-3xl font-semibold text-black">Contact details</h2>
           <OpenStatus />
         </div>
 
@@ -413,14 +413,14 @@ const Hero = () => (
           {DETAIL_ROWS.map((row) => {
             const content = (
               <>
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#f0e8db] text-[#9a7640] transition duration-300 group-hover:bg-[#1f1d1b] group-hover:text-[#d4b483]">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-stone-100 text-black transition duration-300 group-hover:bg-black group-hover:text-white">
                   <Icon name={row.icon} className="h-5 w-5" />
                 </span>
                 <span className="min-w-0">
                   <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">
                     {row.label}
                   </span>
-                  <span className="mt-0.5 block break-words text-[15px] font-medium text-[#1f1d1b]">{row.value}</span>
+                  <span className="mt-0.5 block break-words text-[15px] font-medium text-black">{row.value}</span>
                 </span>
               </>
             );
@@ -430,7 +430,7 @@ const Hero = () => (
                   <a
                     href={row.href}
                     {...(row.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="group flex items-center gap-4 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a469]"
+                    className="group flex items-center gap-4 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
                   >
                     {content}
                   </a>
@@ -447,7 +447,7 @@ const Hero = () => (
 );
 
 const Channels = () => (
-  <section aria-labelledby="channels-title" className={`${SECTION} bg-[#faf7f2]`}>
+  <section aria-labelledby="channels-title" className={`${SECTION} bg-white`}>
     <div className={CONTAINER}>
       <Reveal>
         <SectionHeading
@@ -464,14 +464,14 @@ const Channels = () => (
             <a
               href={channel.href}
               {...(channel.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="group flex h-full flex-col rounded-3xl border border-stone-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-[#c9a469]/60 hover:shadow-xl hover:shadow-stone-900/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a469]"
+              className="group flex h-full flex-col rounded-3xl border border-stone-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-black/20 hover:shadow-xl hover:shadow-stone-900/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
             >
-              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f4efe6] text-[#9a7640] transition duration-300 group-hover:bg-[#1f1d1b] group-hover:text-[#d4b483]">
+              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-stone-100 text-black transition duration-300 group-hover:bg-black group-hover:text-white">
                 <Icon name={channel.icon} className="h-7 w-7" />
               </span>
-              <h3 className="dr-display mt-6 text-2xl font-semibold text-[#1f1d1b]">{channel.title}</h3>
+              <h3 className="dr-display mt-6 text-2xl font-semibold text-black">{channel.title}</h3>
               <p className="mt-3 flex-1 text-[15px] leading-7 text-stone-600">{channel.text}</p>
-              <span className="mt-6 flex items-center gap-2 break-all text-sm font-semibold text-[#9a7640]">
+              <span className="mt-6 flex items-center gap-2 break-all text-sm font-semibold text-black">
                 {channel.action}
                 <Icon name="arrow" className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
               </span>
@@ -486,15 +486,15 @@ const Channels = () => (
 /* ------------------------------- Contact form ------------------------------ */
 
 const INPUT_BASE =
-  "w-full rounded-xl border bg-white px-4 py-3.5 text-[15px] text-[#1f1d1b] placeholder:text-stone-400 transition duration-200 focus:outline-none focus:ring-2";
+  "w-full rounded-xl border bg-white px-4 py-3.5 text-[15px] text-black placeholder:text-stone-400 transition duration-200 focus:outline-none focus:ring-2";
 const inputState = (hasError) =>
   hasError
     ? "border-red-400 focus:border-red-500 focus:ring-red-200"
-    : "border-stone-300 hover:border-stone-400 focus:border-[#9a7640] focus:ring-[#c9a469]/30";
+    : "border-stone-300 hover:border-stone-400 focus:border-black focus:ring-black/10";
 
 const Field = ({ id, label, error, children }) => (
   <div>
-    <label htmlFor={id} className="mb-2 block text-sm font-medium text-[#1f1d1b]">
+    <label htmlFor={id} className="mb-2 block text-sm font-medium text-black">
       {label}
     </label>
     {children}
@@ -555,17 +555,17 @@ const ContactForm = ({ onSubmit }) => {
   if (status === "success") {
     return (
       <div role="status" className="flex h-full flex-col items-center justify-center rounded-3xl bg-white p-10 text-center shadow-xl shadow-stone-900/5 sm:p-14">
-        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#1f1d1b] text-[#d4b483]">
+        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-black text-white">
           <Icon name="check" className="h-8 w-8" />
         </span>
-        <h3 className="dr-display mt-6 text-3xl font-semibold text-[#1f1d1b]">
+        <h3 className="dr-display mt-6 text-3xl font-semibold text-black">
           Thank you, {values.fullName.trim().split(" ")[0]}.
         </h3>
         <p className="mt-4 max-w-sm text-[15px] leading-7 text-stone-600">
           Your message has been received. A member of the Dresser team will reply to {values.email.trim()} within one
           business day.
         </p>
-        <p className="mt-6 rounded-full bg-[#f4efe6] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#9a7640]">
+        <p className="mt-6 rounded-full bg-stone-100 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-black">
           Reference {reference}
         </p>
         <Button type="button" variant="outline" arrow={false} onClick={reset} className="mt-8">
@@ -637,7 +637,7 @@ const ContactForm = ({ onSubmit }) => {
       </div>
 
       <fieldset className="mt-6">
-        <legend className="mb-3 text-sm font-medium text-[#1f1d1b]">What can we help you with?</legend>
+        <legend className="mb-3 text-sm font-medium text-black">What can we help you with?</legend>
         <div className="flex flex-wrap gap-2.5">
           {INQUIRY_TYPES.map((type) => (
             <label key={type.value} className="cursor-pointer">
@@ -649,7 +649,7 @@ const ContactForm = ({ onSubmit }) => {
                 onChange={handleChange}
                 className="peer sr-only"
               />
-              <span className="inline-flex rounded-full border border-stone-300 bg-white px-4 py-2 text-sm font-medium text-stone-700 transition duration-200 hover:border-[#9a7640] hover:text-[#1f1d1b] peer-checked:border-[#1f1d1b] peer-checked:bg-[#1f1d1b] peer-checked:text-[#faf7f2] peer-focus-visible:ring-2 peer-focus-visible:ring-[#c9a469] peer-focus-visible:ring-offset-2">
+              <span className="inline-flex rounded-full border border-stone-300 bg-white px-4 py-2 text-sm font-medium text-stone-700 transition duration-200 hover:border-black hover:text-black peer-checked:border-black peer-checked:bg-black peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-black peer-focus-visible:ring-offset-2">
                 {type.label}
               </span>
             </label>
@@ -704,7 +704,7 @@ const ContactForm = ({ onSubmit }) => {
 };
 
 const FormSection = ({ onSubmit }) => (
-  <section id="contact-form" aria-labelledby="form-title" className={`${SECTION} scroll-mt-4 bg-[#f4efe6]`}>
+  <section id="contact-form" aria-labelledby="form-title" className={`${SECTION} scroll-mt-4 bg-stone-50`}>
     <div className={`${CONTAINER} grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20`}>
       <Reveal>
         <SectionHeading
@@ -718,25 +718,25 @@ const FormSection = ({ onSubmit }) => (
         <ul className="mt-10 space-y-6">
           {FORM_PROMISES.map((promise) => (
             <li key={promise.title} className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white text-[#9a7640] shadow-sm">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white text-black shadow-sm">
                 <Icon name={promise.icon} className="h-6 w-6" />
               </span>
               <span>
-                <span className="block font-semibold text-[#1f1d1b]">{promise.title}</span>
+                <span className="block font-semibold text-black">{promise.title}</span>
                 <span className="mt-1 block text-[15px] leading-7 text-stone-600">{promise.text}</span>
               </span>
             </li>
           ))}
         </ul>
 
-        <div className="mt-10 rounded-2xl border border-[#c9a469]/40 bg-white/60 p-6">
-          <p className="dr-display text-2xl font-semibold text-[#1f1d1b]">Prefer to talk it through?</p>
+        <div className="mt-10 rounded-2xl border border-black/10 bg-white p-6">
+          <p className="dr-display text-2xl font-semibold text-black">Prefer to talk it through?</p>
           <p className="mt-2 text-[15px] leading-7 text-stone-600">
             Call our studio any day between 9:00 AM and 9:00 PM.
           </p>
           <a
             href={BUSINESS.phoneHref}
-            className="mt-3 inline-flex items-center gap-2 text-lg font-semibold text-[#9a7640] transition hover:text-[#1f1d1b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a469]"
+            className="mt-3 inline-flex items-center gap-2 text-lg font-semibold text-black transition hover:text-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
           >
             <Icon name="phone" className="h-5 w-5" />
             {BUSINESS.phone}
@@ -761,12 +761,12 @@ const MapIllustration = () => (
     aria-label="Illustrated map showing Dresser Studio on Clifton Road, Karachi"
     className="h-full w-full"
   >
-    <rect width="800" height="420" fill="#efe8dc" />
-    <path d="M0 322 C120 300 230 350 350 338 C480 325 610 372 800 340 L800 420 L0 420 Z" fill="#d9e2df" />
-    <rect x="70" y="50" width="150" height="90" rx="16" fill="#e3e6d3" />
-    <rect x="500" y="40" width="190" height="100" rx="16" fill="#e3e6d3" />
-    <rect x="560" y="200" width="150" height="80" rx="16" fill="#e8dfcf" />
-    <g fill="none" strokeLinecap="round" stroke="#fbf8f2">
+    <rect width="800" height="420" fill="#f5f5f5" />
+    <path d="M0 322 C120 300 230 350 350 338 C480 325 610 372 800 340 L800 420 L0 420 Z" fill="#e5e7eb" />
+    <rect x="70" y="50" width="150" height="90" rx="16" fill="#e5e7eb" />
+    <rect x="500" y="40" width="190" height="100" rx="16" fill="#e5e7eb" />
+    <rect x="560" y="200" width="150" height="80" rx="16" fill="#f3f4f6" />
+    <g fill="none" strokeLinecap="round" stroke="#ffffff">
       <path d="M-20 200 C200 190 420 215 820 190" strokeWidth="22" />
       <path d="M300 -10 C310 120 290 300 320 430" strokeWidth="16" />
       <path d="M560 -10 C550 100 570 240 540 430" strokeWidth="12" />
@@ -775,22 +775,22 @@ const MapIllustration = () => (
       <path d="M150 -10 V430" strokeWidth="7" />
       <path d="M700 -10 V430" strokeWidth="7" />
     </g>
-    <text x="90" y="186" fontSize="14" fontWeight="600" letterSpacing="3" fill="#9a8f80">
+    <text x="90" y="186" fontSize="14" fontWeight="600" letterSpacing="3" fill="#4b5563">
       CLIFTON ROAD
     </text>
-    <text x="330" y="395" fontSize="13" fontWeight="600" letterSpacing="4" fill="#8aa09a">
+    <text x="330" y="395" fontSize="13" fontWeight="600" letterSpacing="4" fill="#6b7280">
       ARABIAN SEA
     </text>
     <g transform="translate(380 190)">
-      <circle className="dr-ping" r="16" fill="#9a7640" />
-      <path d="M0 -34c-13 0-23 10-23 23 0 17 23 40 23 40s23-23 23-40c0-13-10-23-23-23z" fill="#1f1d1b" />
-      <circle cy="-11" r="8" fill="#d4b483" />
+      <circle className="dr-ping" r="16" fill="#111827" />
+      <path d="M0 -34c-13 0-23 10-23 23 0 17 23 40 23 40s23-23 23-40c0-13-10-23-23-23z" fill="#000000" />
+      <circle cy="-11" r="8" fill="#ffffff" />
     </g>
   </svg>
 );
 
 const Showroom = () => (
-  <section aria-labelledby="showroom-title" className={`${SECTION} overflow-hidden bg-[#faf7f2]`}>
+  <section aria-labelledby="showroom-title" className={`${SECTION} overflow-hidden bg-white`}>
     <div className={CONTAINER}>
       <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
         <Reveal>
@@ -798,7 +798,7 @@ const Showroom = () => (
             <div className="aspect-[4/5] overflow-hidden rounded-3xl bg-stone-200 shadow-2xl shadow-stone-900/10">
               <Photo id={PHOTOS.showroom} alt="Styled seating area inside the Dresser Studio showroom" width={1100} />
             </div>
-            <div className="absolute bottom-0 right-0 aspect-square w-2/5 overflow-hidden rounded-2xl border-[6px] border-[#faf7f2] bg-stone-300 shadow-xl">
+            <div className="absolute bottom-0 right-0 aspect-square w-2/5 overflow-hidden rounded-2xl border-[6px] border-white bg-stone-300 shadow-xl">
               <Photo id={PHOTOS.showroomAccent} alt="Furniture display at Dresser Studio" width={600} />
             </div>
             <OpenStatus className="absolute left-5 top-5 shadow-md backdrop-blur" />
@@ -815,7 +815,7 @@ const Showroom = () => (
           />
 
           <address className="mt-8 not-italic">
-            <p className="dr-display text-2xl font-semibold text-[#1f1d1b]">{BUSINESS.addressLines[0]}</p>
+            <p className="dr-display text-2xl font-semibold text-black">{BUSINESS.addressLines[0]}</p>
             <p className="mt-1 text-base leading-7 text-stone-600">
               {BUSINESS.addressLines[1]}, {BUSINESS.addressLines[2]}
             </p>
@@ -823,11 +823,11 @@ const Showroom = () => (
 
           <dl className="mt-6 divide-y divide-stone-200 rounded-2xl border border-stone-200 bg-white">
             <div className="flex flex-wrap justify-between gap-2 px-5 py-4 text-[15px]">
-              <dt className="font-medium text-[#1f1d1b]">Monday – Sunday</dt>
+              <dt className="font-medium text-black">Monday – Sunday</dt>
               <dd className="text-stone-600">9:00 AM – 9:00 PM</dd>
             </div>
             <div className="flex flex-wrap justify-between gap-2 px-5 py-4 text-[15px]">
-              <dt className="font-medium text-[#1f1d1b]">Private consultations</dt>
+              <dt className="font-medium text-black">Private consultations</dt>
               <dd className="text-stone-600">By appointment, from 8:00 AM</dd>
             </div>
           </dl>
@@ -835,7 +835,7 @@ const Showroom = () => (
           <ul className="mt-8 grid gap-4 sm:grid-cols-2">
             {AMENITIES.map((item) => (
               <li key={item.label} className="flex items-center gap-3 text-[15px] text-stone-700">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#f0e8db] text-[#9a7640]">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-stone-100 text-black">
                   <Icon name={item.icon} className="h-5 w-5" />
                 </span>
                 {item.label}
@@ -846,10 +846,10 @@ const Showroom = () => (
       </div>
 
       <Reveal className="mt-16">
-        <div className="relative h-[380px] overflow-hidden rounded-3xl border border-stone-200 bg-[#efe8dc] shadow-xl shadow-stone-900/5 sm:h-[440px]">
+        <div className="relative h-[380px] overflow-hidden rounded-3xl border border-stone-200 bg-stone-100 shadow-xl shadow-stone-900/5 sm:h-[440px]">
           <MapIllustration />
           <div className="absolute inset-x-4 bottom-4 rounded-2xl bg-white/95 p-5 shadow-xl backdrop-blur sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-sm sm:p-6">
-            <p className="dr-display text-2xl font-semibold text-[#1f1d1b]">Find us on Clifton Road</p>
+            <p className="dr-display text-2xl font-semibold text-black">Find us on Clifton Road</p>
             <p className="mt-1 text-sm leading-6 text-stone-600">
               Ten minutes from Boat Basin, with free parking directly outside the studio.
             </p>
@@ -879,7 +879,7 @@ const FaqItem = ({ item, open, onToggle }) => {
   return (
     <div
       className={`rounded-2xl border bg-white transition duration-300 ${
-        open ? "border-[#c9a469]/60 shadow-lg shadow-stone-900/5" : "border-stone-200 hover:border-stone-300"
+        open ? "border-black/20 shadow-lg shadow-stone-900/5" : "border-stone-200 hover:border-stone-300"
       }`}
     >
       <h3>
@@ -889,12 +889,12 @@ const FaqItem = ({ item, open, onToggle }) => {
           aria-expanded={open}
           aria-controls={panelId}
           onClick={onToggle}
-          className="flex w-full items-center justify-between gap-4 rounded-2xl px-6 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a469]"
+          className="flex w-full items-center justify-between gap-4 rounded-2xl px-6 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
         >
-          <span className="dr-display text-xl font-semibold text-[#1f1d1b] sm:text-2xl">{item.q}</span>
+          <span className="dr-display text-xl font-semibold text-black sm:text-2xl">{item.q}</span>
           <span
             className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition duration-300 ${
-              open ? "rotate-180 bg-[#1f1d1b] text-[#d4b483]" : "bg-[#f4efe6] text-[#9a7640]"
+              open ? "rotate-180 bg-black text-white" : "bg-stone-100 text-black"
             }`}
           >
             <Icon name="chevron" className="h-5 w-5" />
@@ -919,7 +919,7 @@ const Faq = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section aria-labelledby="faq-title" className={`${SECTION} bg-[#f4efe6]`}>
+    <section aria-labelledby="faq-title" className={`${SECTION} bg-stone-50`}>
       <div className={`${CONTAINER} grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20`}>
         <Reveal>
           <SectionHeading
@@ -973,21 +973,21 @@ const Newsletter = () => {
 
   if (state === "done") {
     return (
-      <div role="status" className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur">
-        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#c9a469] text-[#1f1d1b]">
+      <div role="status" className="rounded-2xl border border-black/10 bg-white p-6 shadow-sm">
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white">
           <Icon name="check" className="h-5 w-5" />
         </span>
-        <p className="dr-display mt-4 text-2xl font-semibold text-[#faf7f2]">Welcome to the Journal.</p>
-        <p className="mt-1 text-sm leading-6 text-stone-300">Your first issue will arrive in your inbox shortly.</p>
+        <p className="dr-display mt-4 text-2xl font-semibold text-black">Welcome to the Journal.</p>
+        <p className="mt-1 text-sm leading-6 text-stone-600">Your first issue will arrive in your inbox shortly.</p>
       </div>
     );
   }
 
   return (
-    <form noValidate onSubmit={handleSubmit} className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur">
-      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#d4b483]">The Dresser Journal</p>
-      <p className="dr-display mt-3 text-2xl font-semibold text-[#faf7f2]">Design notes & private previews</p>
-      <p className="mt-2 text-sm leading-6 text-stone-300">
+    <form noValidate onSubmit={handleSubmit} className="rounded-2xl border border-black/10 bg-white p-6 shadow-sm">
+      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-black/70">The Dresser Journal</p>
+      <p className="dr-display mt-3 text-2xl font-semibold text-black">Design notes & private previews</p>
+      <p className="mt-2 text-sm leading-6 text-stone-600">
         New arrivals, styling ideas and invitations to private sales, twice a month. Unsubscribe anytime.
       </p>
 
@@ -1007,14 +1007,14 @@ const Newsletter = () => {
           }}
           aria-invalid={state === "invalid"}
           aria-describedby={state === "invalid" ? "newsletter-error" : undefined}
-          className="min-w-0 flex-1 rounded-full border border-white/25 bg-white/10 px-5 py-3.5 text-sm text-white placeholder:text-stone-400 focus:border-[#d4b483] focus:outline-none focus:ring-2 focus:ring-[#c9a469]/40"
+          className="min-w-0 flex-1 rounded-full border border-stone-300 bg-white px-5 py-3.5 text-sm text-black placeholder:text-stone-400 focus:border-black focus:outline-none focus:ring-2 focus:ring-black/10"
         />
         <Button type="submit" variant="gold" arrow={false}>
           Subscribe
         </Button>
       </div>
       {state === "invalid" && (
-        <p id="newsletter-error" role="alert" className="mt-3 text-sm text-red-300">
+        <p id="newsletter-error" role="alert" className="mt-3 text-sm text-red-600">
           Please enter a valid email address.
         </p>
       )}
@@ -1023,18 +1023,18 @@ const Newsletter = () => {
 };
 
 const FinalCta = ({ shopPath }) => (
-  <section aria-labelledby="cta-title" className="bg-[#faf7f2] px-5 pb-20 sm:px-8 sm:pb-28 lg:px-10">
+  <section aria-labelledby="cta-title" className="bg-white px-5 pb-20 sm:px-8 sm:pb-28 lg:px-10">
     <Reveal>
-      <div className="relative isolate mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#1f1d1b]">
+      <div className="relative isolate mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-black">
         <div className="absolute inset-0 -z-10" aria-hidden="true">
           <Photo id={PHOTOS.cta} alt="" width={1800} />
-          <div className="absolute inset-0 bg-[#1f1d1b]/80" />
+          <div className="absolute inset-0 bg-black/80" />
         </div>
 
         <div className="grid items-center gap-12 px-6 py-16 sm:px-12 sm:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[#d4b483]">Begin your project</p>
-            <h2 id="cta-title" className="dr-display mt-5 text-4xl font-semibold leading-tight text-[#faf7f2] sm:text-6xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.32em] text-white/70">Begin your project</p>
+            <h2 id="cta-title" className="dr-display mt-5 text-4xl font-semibold leading-tight text-white sm:text-6xl">
               Book a consultation and start your project.
             </h2>
             <p className="mt-6 max-w-xl text-base leading-8 text-stone-300 sm:text-lg">
@@ -1068,7 +1068,7 @@ const FinalCta = ({ shopPath }) => (
 const Contact = ({ shopPath = "/shop", onSubmit }) => (
   <>
     <Nav forceSolid />
-    <main className="dr-body overflow-x-hidden bg-[#faf7f2] text-stone-700 antialiased">
+    <main className="dr-body overflow-x-hidden bg-white text-stone-700 antialiased">
       <style>{PAGE_STYLES}</style>
 
       <Hero />

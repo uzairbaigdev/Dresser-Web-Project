@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { productCatalog } from '../../data/products.js'
 
 const categories = [
   { id: 'all', label: 'All' },
@@ -8,144 +10,13 @@ const categories = [
   { id: 'west', label: 'Western' },
 ]
 
-// Replace image, imageHover, name, price and href with your real catalog data.
-// imageHover is the second photo shown on hover/focus, same as the live site.
-const catalog = [
-  {
-    id: 'p1',
-    category: 'kaftaan',
-    categoryLabel: 'Kaftaan Dresses',
-    name: 'Printed Kaftaan Dress',
-    price: 'Rs. 3,290',
-    badge: 'Best Seller',
-    image: 'https://picsum.photos/seed/dress-01a/800/1000',
-    imageHover: 'https://picsum.photos/seed/dress-01b/800/1000',
-    href: '#',
-  },
-  {
-    id: 'p2',
-    category: 'kaftaan',
-    categoryLabel: 'Kaftaan Dresses',
-    name: 'Embroidered Silk Kaftaan',
-    price: 'Rs. 4,150',
-    badge: 'Limited',
-    image: 'https://picsum.photos/seed/dress-02a/800/1000',
-    imageHover: 'https://picsum.photos/seed/dress-02b/800/1000',
-    href: '#',
-  },
-  {
-    id: 'p3',
-    category: 'kaftaan',
-    categoryLabel: 'Kaftaan Dresses',
-    name: 'Printed Maxi Kaftaan',
-    price: 'Rs. 2,990',
-    badge: 'New',
-    image: 'https://picsum.photos/seed/dress-03a/800/1000',
-    imageHover: 'https://picsum.photos/seed/dress-03b/800/1000',
-    href: '#',
-  },
-  {
-    id: 'p4',
-    category: 'pret',
-    categoryLabel: 'Summer Essential 3 Pc',
-    name: 'Embroidered Kurta Dupatta Trouser',
-    price: 'Rs. 3,590',
-    badge: 'Trending',
-    image: 'https://picsum.photos/seed/dress-04a/800/1000',
-    imageHover: 'https://picsum.photos/seed/dress-04b/800/1000',
-    href: '#',
-  },
-  {
-    id: 'p5',
-    category: 'pret',
-    categoryLabel: 'Signature Pret',
-    name: '3-Piece Lawn Suit',
-    price: 'Rs. 4,290',
-    badge: 'Fan Favourite',
-    image: 'https://picsum.photos/seed/dress-05a/800/1000',
-    imageHover: 'https://picsum.photos/seed/dress-05b/800/1000',
-    href: '#',
-  },
-  {
-    id: 'p6',
-    category: 'pret',
-    categoryLabel: 'Signature Pret',
-    name: 'Chikankari Kurta Set',
-    price: 'Rs. 3,890',
-    badge: 'Popular',
-    image: 'https://picsum.photos/seed/dress-06a/800/1000',
-    imageHover: 'https://picsum.photos/seed/dress-06b/800/1000',
-    href: '#',
-  },
-  {
-    id: 'p7',
-    category: 'unstitched',
-    categoryLabel: 'Essential Unstitched',
-    name: 'Printed Lawn Unstitched — 3 Pc',
-    price: 'Rs. 2,690',
-    badge: 'New Arrival',
-    image: 'https://picsum.photos/seed/dress-07a/800/1000',
-    imageHover: 'https://picsum.photos/seed/dress-07b/800/1000',
-    href: '#',
-  },
-  {
-    id: 'p8',
-    category: 'unstitched',
-    categoryLabel: 'Luxury Unstitched',
-    name: 'Embroidered Cotton Unstitched',
-    price: 'Rs. 3,150',
-    badge: 'Featured',
-    image: 'https://picsum.photos/seed/dress-08a/800/1000',
-    imageHover: 'https://picsum.photos/seed/dress-08b/800/1000',
-    href: '#',
-  },
-  {
-    id: 'p9',
-    category: 'unstitched',
-    categoryLabel: 'Essential Unstitched',
-    name: 'Digital Print Lawn — 2 Pc',
-    price: 'Rs. 2,390',
-    badge: 'Best Seller',
-    image: 'https://picsum.photos/seed/dress-09a/800/1000',
-    imageHover: 'https://picsum.photos/seed/dress-09b/800/1000',
-    href: '#',
-  },
-  {
-    id: 'p10',
-    category: 'west',
-    categoryLabel: 'Western',
-    name: 'Co-Ord Set — Top & Trouser',
-    price: 'Rs. 3,490',
-    badge: 'Popular',
-    image: 'https://picsum.photos/seed/dress-10a/800/1000',
-    imageHover: 'https://picsum.photos/seed/dress-10b/800/1000',
-    href: '#',
-  },
-  {
-    id: 'p11',
-    category: 'west',
-    categoryLabel: 'Western',
-    name: 'Graphic Print T-Shirt',
-    price: 'Rs. 1,690',
-    badge: 'New',
-    image: 'https://picsum.photos/seed/dress-11a/800/1000',
-    imageHover: 'https://picsum.photos/seed/dress-11b/800/1000',
-    href: '#',
-  },
-  {
-    id: 'p12',
-    category: 'west',
-    categoryLabel: 'Western',
-    name: 'Tailored Wide-Leg Trouser',
-    price: 'Rs. 2,290',
-    badge: 'Trending',
-    image: 'https://picsum.photos/seed/dress-12a/800/1000',
-    imageHover: 'https://picsum.photos/seed/dress-12b/800/1000',
-    href: '#',
-  },
-]
+const catalog = productCatalog.map((product) => ({
+  ...product,
+  price: `Rs. ${product.price.toLocaleString('en-PK')}`,
+  href: `/product/${product.id}`,
+}))
 
-const discoverHref = '#'
+const discoverHref = '/shop'
 
 const Products = () => {
   const [activeCategory, setActiveCategory] = useState('all')
@@ -188,7 +59,7 @@ const Products = () => {
       <div className="wp__grid">
         {filteredProducts.map((product) => (
           <article className="wp-card" key={product.id}>
-            <a href={product.href} className="wp-card__link">
+            <Link to={product.href} className="wp-card__link">
               <span className="wp-card__media">
                 <img
                   src={product.image}
@@ -213,11 +84,11 @@ const Products = () => {
                 <h3 className="wp-card__name">{product.name}</h3>
                 <span className="wp-card__price">{product.price}</span>
               </span>
-            </a>
+            </Link>
           </article>
         ))}
 
-        <a className="wp-discover" href={discoverHref}>
+        <Link className="wp-discover" to={discoverHref}>
           <span className="wp-discover__icon" aria-hidden="true">
             →
           </span>
@@ -225,7 +96,7 @@ const Products = () => {
           <span className="wp-discover__sub">
             Explore the full {activeCategoryLabel} collection
           </span>
-        </a>
+        </Link>
       </div>
 
       <style>{`

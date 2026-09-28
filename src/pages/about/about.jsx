@@ -226,19 +226,19 @@ const SECTION = "py-20 sm:py-28";
 
 const BUTTON_VARIANTS = {
   primary:
-    "bg-[#1f1d1b] text-[#faf7f2] shadow-lg shadow-black/10 hover:-translate-y-0.5 hover:bg-[#9a7640] hover:shadow-xl",
+    "bg-black text-white shadow-lg shadow-black/10 hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-xl",
   outline:
-    "border border-[#1f1d1b]/25 text-[#1f1d1b] hover:-translate-y-0.5 hover:border-[#1f1d1b] hover:bg-[#1f1d1b] hover:text-[#faf7f2]",
+    "border border-black/20 text-black hover:-translate-y-0.5 hover:border-black hover:bg-black hover:text-white",
   gold:
-    "bg-[#c9a469] text-[#1f1d1b] shadow-lg shadow-black/20 hover:-translate-y-0.5 hover:bg-[#e2c48f] hover:shadow-xl",
+    "bg-black text-white shadow-lg shadow-black/15 hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-xl",
   ghost:
-    "border border-white/40 text-white backdrop-blur-sm hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[#1f1d1b]",
+    "border border-white/40 text-white backdrop-blur-sm hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-black",
 };
 
 const LinkButton = ({ to, variant = "primary", children }) => (
   <Link
     to={to}
-    className={`group inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a469] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1f1d1b] ${BUTTON_VARIANTS[variant]}`}
+    className={`group inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white ${BUTTON_VARIANTS[variant]}`}
   >
     {children}
     <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -246,8 +246,8 @@ const LinkButton = ({ to, variant = "primary", children }) => (
 );
 
 const HEADING_TONES = {
-  light: { eyebrow: "text-[#9a7640]", title: "text-[#1f1d1b]", text: "text-stone-600" },
-  dark: { eyebrow: "text-[#d4b483]", title: "text-[#faf7f2]", text: "text-stone-300" },
+  light: { eyebrow: "text-black", title: "text-black", text: "text-stone-600" },
+  dark: { eyebrow: "text-white/70", title: "text-white", text: "text-stone-300" },
 };
 
 const SectionHeading = ({ id, eyebrow, title, description, tone = "light", align = "center" }) => {
@@ -360,7 +360,7 @@ const CountUp = ({ end, suffix = "", duration = 1600 }) => {
 };
 
 const Stars = () => (
-  <div className="flex gap-1 text-[#c9a469]" role="img" aria-label="Rated 5 out of 5 stars">
+  <div className="flex gap-1 text-black" role="img" aria-label="Rated 5 out of 5 stars">
     {Array.from({ length: 5 }, (_, i) => (
       <Icon key={i} name="star" filled className="h-4 w-4" />
     ))}
@@ -372,26 +372,26 @@ const Stars = () => (
 const Hero = ({ shopPath, contactPath }) => (
   <section
     aria-labelledby="about-hero-title"
-    className="relative isolate flex min-h-[92vh] items-center overflow-hidden bg-[#1f1d1b]"
+    className="relative isolate flex min-h-[92vh] items-center overflow-hidden bg-black"
   >
     <div className="absolute inset-0 -z-10" aria-hidden="true">
       <Photo id={PHOTOS.hero} alt="" width={2000} />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1f1d1b]/90 via-[#1f1d1b]/60 to-[#1f1d1b]/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1f1d1b]/70 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
     </div>
 
     <div className={`${CONTAINER} py-28 sm:py-32`}>
       <div className="max-w-2xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[#d4b483]">About Dresser</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.32em] text-white/70">About Dresser</p>
 
         <h1
           id="about-hero-title"
-          className="dr-display mt-6 text-5xl font-semibold leading-[1.05] text-[#faf7f2] sm:text-6xl lg:text-7xl"
+          className="dr-display mt-6 text-5xl font-semibold leading-[1.05] text-white sm:text-6xl lg:text-7xl"
         >
           Furniture designed to be lived in, and loved for generations.
         </h1>
 
-        <p className="mt-6 text-xl font-medium text-[#f1e6d2] dr-display sm:text-2xl">
+        <p className="mt-6 text-xl font-medium text-white/90 dr-display sm:text-2xl">
           At Dresser, we believe every space deserves thoughtful design.
         </p>
 
@@ -412,7 +412,7 @@ const Hero = ({ shopPath, contactPath }) => (
         <ul className="mt-14 flex flex-col gap-3 text-sm text-stone-200 sm:flex-row sm:flex-wrap sm:gap-x-8">
           {HERO_ASSURANCES.map((item) => (
             <li key={item} className="flex items-center gap-2">
-              <Icon name="check" className="h-4 w-4 text-[#d4b483]" />
+              <Icon name="check" className="h-4 w-4 text-white" />
               {item}
             </li>
           ))}
@@ -423,17 +423,17 @@ const Hero = ({ shopPath, contactPath }) => (
 );
 
 const Story = () => (
-  <section id="story" aria-labelledby="story-title" className={`${SECTION} overflow-hidden bg-[#faf7f2]`}>
+  <section id="story" aria-labelledby="story-title" className={`${SECTION} overflow-hidden bg-white`}>
     <div className={`${CONTAINER} grid items-center gap-16 lg:grid-cols-2 lg:gap-20`}>
       <Reveal>
         <div className="relative pb-10 pr-6 sm:pr-10">
           <div className="aspect-[4/5] overflow-hidden rounded-3xl bg-stone-200 shadow-2xl shadow-stone-900/10">
             <Photo id={PHOTOS.story} alt="A warm, layered living room furnished with Dresser pieces" width={1100} />
           </div>
-          <div className="absolute bottom-0 right-0 aspect-square w-2/5 overflow-hidden rounded-2xl border-[6px] border-[#faf7f2] bg-stone-300 shadow-xl">
+          <div className="absolute bottom-0 right-0 aspect-square w-2/5 overflow-hidden rounded-2xl border-[6px] border-white bg-stone-300 shadow-xl">
             <Photo id={PHOTOS.storyAccent} alt="Beige sofa and armchair, detail view" width={600} />
           </div>
-          <div className="absolute left-5 top-5 rounded-full bg-[#faf7f2]/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#1f1d1b] backdrop-blur">
+          <div className="absolute left-5 top-5 rounded-full bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black backdrop-blur">
             Est. 2011 · Karachi
           </div>
         </div>
@@ -464,8 +464,8 @@ const Story = () => (
           </p>
         </div>
 
-        <figure className="mt-10 border-l-2 border-[#c9a469] pl-6">
-          <blockquote className="dr-display text-2xl leading-snug text-[#1f1d1b] sm:text-3xl">
+        <figure className="mt-10 border-l-2 border-black pl-6">
+          <blockquote className="dr-display text-2xl leading-snug text-black sm:text-3xl">
             “Good furniture should quietly improve your days, and still look right decades from now.”
           </blockquote>
           <figcaption className="mt-4 text-sm font-medium text-stone-500">Elena Marlowe, Founder</figcaption>
@@ -476,15 +476,15 @@ const Story = () => (
 );
 
 const Stats = () => (
-  <section aria-label="Dresser by the numbers" className="bg-[#1f1d1b] py-16 sm:py-20">
+  <section aria-label="Dresser by the numbers" className="bg-black py-16 sm:py-20">
     <div className={`${CONTAINER} grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4`}>
       {STATS.map((stat, index) => (
         <Reveal key={stat.label} delay={index * 100}>
-          <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-[#c9a469]/50 hover:bg-white/10 sm:p-8">
-            <p className="dr-display text-5xl font-semibold text-[#d4b483] sm:text-6xl">
+          <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-white/30 hover:bg-white/10 sm:p-8">
+            <p className="dr-display text-5xl font-semibold text-white sm:text-6xl">
               <CountUp end={stat.end} suffix={stat.suffix} />
             </p>
-            <p className="mt-3 text-sm font-semibold text-[#faf7f2] sm:text-base">{stat.label}</p>
+            <p className="mt-3 text-sm font-semibold text-white sm:text-base">{stat.label}</p>
             <p className="mt-1 text-xs text-stone-400 sm:text-sm">{stat.note}</p>
           </div>
         </Reveal>
@@ -494,7 +494,7 @@ const Stats = () => (
 );
 
 const WhyChooseUs = () => (
-  <section aria-labelledby="why-title" className={`${SECTION} bg-[#f4efe6]`}>
+  <section aria-labelledby="why-title" className={`${SECTION} bg-white`}>
     <div className={CONTAINER}>
       <Reveal>
         <SectionHeading
@@ -508,11 +508,11 @@ const WhyChooseUs = () => (
       <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {BENEFITS.map((benefit, index) => (
           <Reveal key={benefit.title} delay={(index % 3) * 100}>
-            <article className="group h-full rounded-3xl border border-stone-200/80 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-[#c9a469]/60 hover:shadow-xl hover:shadow-stone-900/10">
-              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f4efe6] text-[#9a7640] transition duration-300 group-hover:bg-[#1f1d1b] group-hover:text-[#d4b483]">
+            <article className="group h-full rounded-3xl border border-stone-200/80 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-black/20 hover:shadow-xl hover:shadow-stone-900/10">
+              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-stone-100 text-black transition duration-300 group-hover:bg-black group-hover:text-white">
                 <Icon name={benefit.icon} className="h-7 w-7" />
               </span>
-              <h3 className="dr-display mt-6 text-2xl font-semibold text-[#1f1d1b]">{benefit.title}</h3>
+              <h3 className="dr-display mt-6 text-2xl font-semibold text-black">{benefit.title}</h3>
               <p className="mt-3 text-[15px] leading-7 text-stone-600">{benefit.text}</p>
             </article>
           </Reveal>
@@ -523,7 +523,7 @@ const WhyChooseUs = () => (
 );
 
 const Craftsmanship = () => (
-  <section aria-labelledby="values-title" className={`${SECTION} bg-[#faf7f2]`}>
+  <section aria-labelledby="values-title" className={`${SECTION} bg-white`}>
     <div className={CONTAINER}>
       <Reveal>
         <SectionHeading
@@ -552,15 +552,15 @@ const Craftsmanship = () => (
                 </div>
 
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#9a7640]">{value.eyebrow}</p>
-                  <h3 className="dr-display mt-4 text-3xl font-semibold leading-tight text-[#1f1d1b] sm:text-4xl">
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-black">{value.eyebrow}</p>
+                  <h3 className="dr-display mt-4 text-3xl font-semibold leading-tight text-black sm:text-4xl">
                     {value.title}
                   </h3>
                   <p className="mt-5 text-base leading-8 text-stone-600">{value.text}</p>
                   <ul className="mt-7 space-y-3">
                     {value.points.map((point) => (
                       <li key={point} className="flex items-start gap-3 text-[15px] text-stone-700">
-                        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1f1d1b] text-[#d4b483]">
+                        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-black text-white">
                           <Icon name="check" className="h-3.5 w-3.5" />
                         </span>
                         {point}
@@ -578,7 +578,7 @@ const Craftsmanship = () => (
 );
 
 const Team = () => (
-  <section aria-labelledby="team-title" className={`${SECTION} bg-[#f4efe6]`}>
+  <section aria-labelledby="team-title" className={`${SECTION} bg-stone-50`}>
     <div className={CONTAINER}>
       <Reveal>
         <SectionHeading
@@ -602,8 +602,8 @@ const Team = () => (
                 />
               </div>
               <div className="px-5 pb-6 pt-6">
-                <h3 className="dr-display text-2xl font-semibold text-[#1f1d1b]">{member.name}</h3>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#9a7640]">{member.role}</p>
+                <h3 className="dr-display text-2xl font-semibold text-black">{member.name}</h3>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-black/70">{member.role}</p>
                 <p className="mt-4 text-[15px] leading-7 text-stone-600">{member.bio}</p>
               </div>
             </article>
@@ -615,7 +615,7 @@ const Team = () => (
 );
 
 const Process = () => (
-  <section aria-labelledby="process-title" className={`${SECTION} bg-[#1f1d1b]`}>
+  <section aria-labelledby="process-title" className={`${SECTION} bg-black`}>
     <div className={CONTAINER}>
       <Reveal>
         <SectionHeading
@@ -633,11 +633,11 @@ const Process = () => (
           {PROCESS.map((item, index) => (
             <li key={item.step}>
               <Reveal delay={index * 100} className="h-full">
-                <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6 transition duration-300 hover:-translate-y-1 hover:border-[#c9a469]/50 hover:bg-white/10">
-                  <span className="dr-display flex h-14 w-14 items-center justify-center rounded-full border border-[#c9a469]/60 bg-[#1f1d1b] text-xl font-semibold text-[#d4b483]">
+                <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6 transition duration-300 hover:-translate-y-1 hover:border-white/30 hover:bg-white/10">
+                  <span className="dr-display flex h-14 w-14 items-center justify-center rounded-full border border-white/30 bg-black text-xl font-semibold text-white">
                     {item.step}
                   </span>
-                  <h3 className="dr-display mt-5 text-2xl font-semibold text-[#faf7f2]">{item.title}</h3>
+                  <h3 className="dr-display mt-5 text-2xl font-semibold text-white">{item.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-stone-400">{item.text}</p>
                 </div>
               </Reveal>
@@ -650,7 +650,7 @@ const Process = () => (
 );
 
 const Testimonials = () => (
-  <section aria-labelledby="testimonials-title" className={`${SECTION} bg-[#faf7f2]`}>
+  <section aria-labelledby="testimonials-title" className={`${SECTION} bg-white`}>
     <div className={CONTAINER}>
       <Reveal>
         <SectionHeading
@@ -666,13 +666,13 @@ const Testimonials = () => (
           <Reveal key={item.name} delay={index * 120}>
             <figure className="flex h-full flex-col rounded-3xl border border-stone-200 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-stone-900/10">
               <Stars />
-              <blockquote className="dr-display mt-6 flex-1 text-xl leading-relaxed text-[#1f1d1b]">
+              <blockquote className="dr-display mt-6 flex-1 text-xl leading-relaxed text-black">
                 “{item.quote}”
               </blockquote>
               <figcaption className="mt-8 flex items-center gap-4 border-t border-stone-200 pt-6">
                 <span
                   aria-hidden="true"
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1f1d1b] text-sm font-semibold text-[#d4b483]"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-sm font-semibold text-white"
                 >
                   {item.name
                     .split(" ")
@@ -680,7 +680,7 @@ const Testimonials = () => (
                     .join("")}
                 </span>
                 <span>
-                  <span className="block text-sm font-semibold text-[#1f1d1b]">{item.name}</span>
+                  <span className="block text-sm font-semibold text-black">{item.name}</span>
                   <span className="block text-xs text-stone-500">
                     {item.place} · {item.product}
                   </span>
@@ -695,19 +695,19 @@ const Testimonials = () => (
 );
 
 const FinalCta = ({ shopPath, contactPath }) => (
-  <section aria-labelledby="cta-title" className="bg-[#faf7f2] px-5 pb-20 sm:px-8 sm:pb-28 lg:px-10">
+  <section aria-labelledby="cta-title" className="bg-white px-5 pb-20 sm:px-8 sm:pb-28 lg:px-10">
     <Reveal>
-      <div className="relative isolate mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#1f1d1b]">
+      <div className="relative isolate mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-black">
         <div className="absolute inset-0 -z-10" aria-hidden="true">
           <Photo id={PHOTOS.cta} alt="" width={1800} />
-          <div className="absolute inset-0 bg-[#1f1d1b]/75" />
+          <div className="absolute inset-0 bg-black/80" />
         </div>
 
         <div className="px-6 py-20 text-center sm:px-12 sm:py-28">
-          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[#d4b483]">Begin your project</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-white/70">Begin your project</p>
           <h2
             id="cta-title"
-            className="dr-display mx-auto mt-5 max-w-3xl text-4xl font-semibold leading-tight text-[#faf7f2] sm:text-6xl"
+            className="dr-display mx-auto mt-5 max-w-3xl text-4xl font-semibold leading-tight text-white sm:text-6xl"
           >
             Bring thoughtful design into your home.
           </h2>
@@ -738,7 +738,7 @@ const FinalCta = ({ shopPath, contactPath }) => (
 const About = ({ shopPath = "/shop", contactPath = "/contact" }) => (
   <>
     <Nav forceSolid />
-    <main className="dr-body overflow-x-hidden bg-[#faf7f2] text-stone-700 antialiased">
+    <main className="dr-body overflow-x-hidden bg-white text-stone-700 antialiased">
       <style>{PAGE_STYLES}</style>
 
       <Hero shopPath={shopPath} contactPath={contactPath} />
