@@ -197,21 +197,16 @@ const Footer = ({ brandName = 'DRESSER' }) => {
       </button>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
-        /* ---------- Design tokens ----------
-           A single shining-black palette used by every section
-           below, so the whole footer reads as one consistent surface. */
         .ft-footer {
-          --ft-bg: #000000;
+          --ft-bg: #080908;
           --ft-bg-deep: #000000;
-          --ft-border: rgba(255, 255, 255, 0.2);
-          --ft-text: #ffffff;
-          --ft-text-secondary: #ffffff;
-          --ft-accent: #ffffff;
+          --ft-border: rgba(255, 255, 255, 0.18);
+          --ft-text: #f7f5ef;
+          --ft-text-secondary: rgba(247, 245, 239, 0.76);
+          --ft-accent: var(--brand-copper-light);
 
           position: relative;
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          font-family: var(--font-sans);
           color: var(--ft-text);
         }
 
@@ -369,7 +364,7 @@ const Footer = ({ brandName = 'DRESSER' }) => {
 
         .ft-payments span {
           border: 1px solid var(--ft-border);
-          background: #000000;
+          background: var(--ft-bg);
           border-radius: 6px;
           padding: 5px 10px;
           font-size: 0.76rem;
@@ -400,15 +395,15 @@ const Footer = ({ brandName = 'DRESSER' }) => {
         .ft-back-to-top {
           position: fixed;
           right: 24px;
-          bottom: 24px;
+          bottom: 88px;
           width: 46px;
           height: 46px;
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          background: #000000;
-          color: #ffffff;
-          border: 1px solid #ffffff;
+          background: #080908;
+          color: #f7f5ef;
+          border: 1px solid var(--brand-copper-light);
           border-radius: 50%;
           cursor: pointer;
           box-shadow: 0 14px 24px -8px rgba(0, 0, 0, 0.6);
@@ -438,7 +433,7 @@ const Footer = ({ brandName = 'DRESSER' }) => {
 
         @media (max-width: 640px) {
           .ft-main__grid { grid-template-columns: 1fr; }
-          .ft-back-to-top { right: 16px; bottom: 16px; }
+          .ft-back-to-top { right: 16px; bottom: 88px; }
         }
 
         @media (prefers-reduced-motion: reduce) {

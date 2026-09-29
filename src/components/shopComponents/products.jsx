@@ -150,7 +150,7 @@ const Products = () => {
   )
 
   return (
-    <div className="bg-[#fbfaf7]">
+    <div className="bg-[var(--brand-paper)]">
       <ProductsTypes
         types={DRESS_TYPES}
         activeType={activeType}

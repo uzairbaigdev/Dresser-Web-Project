@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 // Replace these slides with your real collections, images and copy.
 // image: use a 1600x900 (or larger) landscape image for best results.
@@ -11,7 +12,7 @@ const slides = [
     description:
       'Discover pieces made for the way you actually live — versatile, comfortable, effortlessly stylish.',
     ctaLabel: 'Shop New Arrivals',
-    ctaHref: '#',
+    ctaHref: '/search',
     trust: '★★★★★ 4.8 · 70,000+ happy customers',
   },
   {
@@ -22,7 +23,7 @@ const slides = [
     description:
       'Tops and bottoms designed to mix, match and move with you all day long.',
     ctaLabel: 'Explore Western Wear',
-    ctaHref: '#',
+    ctaHref: '/search',
     trust: 'Our most re-ordered western edit yet',
   },
   {
@@ -33,7 +34,7 @@ const slides = [
     description:
       'Breathable fabric and fresh prints — your next favourite outfit starts here.',
     ctaLabel: 'Shop Unstitched',
-    ctaHref: '#',
+    ctaHref: '/search',
     trust: '4.9/5 rated by our customers',
   },
   {
@@ -44,7 +45,7 @@ const slides = [
     description:
       'Intricate embroidery and rich fabric for the moments that matter most.',
     ctaLabel: 'Shop the Collection',
-    ctaHref: '#',
+    ctaHref: '/search',
     trust: '★★★★★ 4.9 · 20,000+ happy customers',
   },
   {
@@ -55,7 +56,7 @@ const slides = [
     description:
       'Premium embroidery and considered tailoring — ready-to-wear that feels timeless.',
     ctaLabel: 'Discover Luxury Pret',
-    ctaHref: '#',
+    ctaHref: '/search',
     trust: '★★★★★ 4.8 · 30,500+ shoppers',
   },
   {
@@ -66,7 +67,7 @@ const slides = [
     description:
       'Premium fabric and clean cuts that move easily from home to event.',
     ctaLabel: 'Shop Menswear',
-    ctaHref: '#',
+    ctaHref: '/search',
     trust: '★★★★★ 4.8 · 100,000+ satisfied customers',
   },
 ]
@@ -76,27 +77,14 @@ const AUTOPLAY_DELAY = 3000
 const firstSectionSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0)
 
-  const goToSlide = useCallback((index) => {
-    setActiveIndex((index + slides.length) % slides.length)
-  }, [])
-
   const goToNext = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % slides.length)
-  }, [])
-
-  const goToPrev = useCallback(() => {
-    setActiveIndex((prev) => (prev - 1 + slides.length) % slides.length)
   }, [])
 
   useEffect(() => {
     const timer = setInterval(goToNext, AUTOPLAY_DELAY)
     return () => clearInterval(timer)
   }, [goToNext])
-
-  const handleKeyDown = (event) => {
-    if (event.key === 'ArrowRight') goToNext()
-    if (event.key === 'ArrowLeft') goToPrev()
-  }
 
   const activeSlide = slides[activeIndex]
 
@@ -105,7 +93,6 @@ const firstSectionSlider = () => {
       className="fss"
       aria-roledescription="carousel"
       aria-label="Featured collections"
-      onKeyDown={handleKeyDown}
     >
       <div
         className="fss__track"
@@ -128,45 +115,12 @@ const firstSectionSlider = () => {
               <span className="fss__kicker">{slide.kicker}</span>
               <h2 className="fss__heading">{slide.heading}</h2>
               <p className="fss__description">{slide.description}</p>
-              <a className="fss__cta" href={slide.ctaHref}>
+              <Link className="fss__cta" to={slide.ctaHref}>
                 {slide.ctaLabel}
-              </a>
+              </Link>
               <p className="fss__trust">{slide.trust}</p>
             </div>
           </div>
-        ))}
-      </div>
-
-      <button
-        type="button"
-        className="fss__arrow fss__arrow--prev"
-        aria-label="Previous slide"
-        onClick={goToPrev}
-      >
-        ‹
-      </button>
-      <button
-        type="button"
-        className="fss__arrow fss__arrow--next"
-        aria-label="Next slide"
-        onClick={goToNext}
-      >
-        ›
-      </button>
-
-      <div className="fss__dots" role="tablist" aria-label="Slide navigation">
-        {slides.map((slide, index) => (
-          <button
-            key={slide.id}
-            type="button"
-            role="tab"
-            className={`fss__dot${
-              index === activeIndex ? ' fss__dot--active' : ''
-            }`}
-            aria-selected={index === activeIndex}
-            aria-label={`Go to slide ${index + 1}`}
-            onClick={() => goToSlide(index)}
-          />
         ))}
       </div>
 
@@ -181,7 +135,7 @@ const firstSectionSlider = () => {
           height: 640px;
           max-height: 86vh;
           overflow: hidden;
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          font-family: var(--font-sans);
           isolation: isolate;
         }
 
@@ -196,6 +150,7 @@ const firstSectionSlider = () => {
         .fss__slide {
           position: relative;
           flex: 0 0 100%;
+          background-color: var(--brand-forest-deep);
           background-size: cover;
           background-position: center;
           display: flex;
@@ -211,9 +166,9 @@ const firstSectionSlider = () => {
           inset: 0;
           background: linear-gradient(
             90deg,
-            rgba(12, 10, 9, 0.72) 0%,
-            rgba(12, 10, 9, 0.38) 45%,
-            rgba(12, 10, 9, 0.05) 75%
+            rgba(37, 44, 38, 0.86) 0%,
+            rgba(37, 44, 38, 0.68) 58%,
+            rgba(37, 44, 38, 0.46) 100%
           );
         }
 
@@ -222,19 +177,19 @@ const firstSectionSlider = () => {
           z-index: 2;
           max-width: 520px;
           padding: 0 6vw;
-          color: #fbf7f2;
+          color: var(--brand-paper);
         }
 
         .fss__kicker {
           display: inline-block;
           font-size: 0.8rem;
           letter-spacing: 0.06em;
-          color: #d9b98a;
+          color: var(--brand-copper-light);
           margin-bottom: 0.9rem;
         }
 
         .fss__heading {
-          font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+          font-family: var(--font-serif);
           font-size: clamp(2rem, 4vw, 3.2rem);
           line-height: 1.15;
           margin: 0 0 0.9rem;
@@ -252,8 +207,8 @@ const firstSectionSlider = () => {
         .fss__cta {
           display: inline-block;
           padding: 0.85rem 2rem;
-          background: #fbf7f2;
-          color: #171310;
+          background: var(--brand-paper);
+          color: var(--brand-ink);
           text-decoration: none;
           font-size: 0.9rem;
           font-weight: 600;
@@ -263,13 +218,13 @@ const firstSectionSlider = () => {
         }
 
         .fss__cta:hover {
-          background: #6e2a3a;
-          color: #fbf7f2;
+          background: var(--brand-forest);
+          color: var(--brand-paper);
           transform: translateY(-1px);
         }
 
         .fss__cta:focus-visible {
-          outline: 2px solid #d9b98a;
+          outline: 2px solid var(--brand-copper-light);
           outline-offset: 3px;
         }
 
@@ -277,76 +232,6 @@ const firstSectionSlider = () => {
           margin: 1.6rem 0 0;
           font-size: 0.85rem;
           color: rgba(251, 247, 242, 0.75);
-        }
-
-        .fss__arrow {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          z-index: 3;
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          border: 1px solid rgba(251, 247, 242, 0.4);
-          background: rgba(12, 10, 9, 0.25);
-          color: #fbf7f2;
-          font-size: 1.5rem;
-          line-height: 1;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: background 200ms ease, border-color 200ms ease;
-        }
-
-        .fss__arrow:hover {
-          background: rgba(12, 10, 9, 0.5);
-          border-color: rgba(251, 247, 242, 0.8);
-        }
-
-        .fss__arrow:focus-visible {
-          outline: 2px solid #d9b98a;
-          outline-offset: 2px;
-        }
-
-        .fss__arrow--prev {
-          left: 24px;
-        }
-
-        .fss__arrow--next {
-          right: 24px;
-        }
-
-        .fss__dots {
-          position: absolute;
-          bottom: 26px;
-          left: 50%;
-          transform: translateX(-50%);
-          z-index: 3;
-          display: flex;
-          gap: 10px;
-        }
-
-        .fss__dot {
-          width: 9px;
-          height: 9px;
-          border-radius: 50%;
-          border: 1px solid rgba(251, 247, 242, 0.6);
-          background: transparent;
-          padding: 0;
-          cursor: pointer;
-          transition: background 200ms ease, width 200ms ease;
-        }
-
-        .fss__dot--active {
-          background: #fbf7f2;
-          width: 22px;
-          border-radius: 5px;
-        }
-
-        .fss__dot:focus-visible {
-          outline: 2px solid #d9b98a;
-          outline-offset: 2px;
         }
 
         .fss__sr-live {
@@ -365,24 +250,11 @@ const firstSectionSlider = () => {
           .fss__content {
             max-width: 100%;
           }
-          .fss__arrow {
-            width: 36px;
-            height: 36px;
-            font-size: 1.2rem;
-          }
-          .fss__arrow--prev {
-            left: 12px;
-          }
-          .fss__arrow--next {
-            right: 12px;
-          }
         }
 
         @media (prefers-reduced-motion: reduce) {
           .fss__track,
-          .fss__cta,
-          .fss__arrow,
-          .fss__dot {
+          .fss__cta {
             transition: none;
           }
         }

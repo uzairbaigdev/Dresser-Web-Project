@@ -422,6 +422,27 @@ export const productCatalog = [
   },
 ]
 
+const rotateProducts = (products, offset) => {
+  if (products.length === 0) return products
+  const start = offset % products.length
+  return [...products.slice(start), ...products.slice(0, start)]
+}
+
+export const getSuggestedProducts = (product, limit = 4) => {
+  const productId = String(product?.id ?? '')
+  const seed = String(product?.id ?? product?.slug ?? product?.name ?? '')
+  const candidates = productCatalog.filter((item) => String(item.id) !== productId)
+  const sameCategory = candidates.filter((item) => item.category === product?.category)
+  const otherCategories = candidates.filter((item) => item.category !== product?.category)
+  const offsetFor = (items, salt = 0) =>
+    [...seed].reduce((total, character) => total + character.charCodeAt(0), salt) % (items.length || 1)
+
+  return [
+    ...rotateProducts(sameCategory, offsetFor(sameCategory)),
+    ...rotateProducts(otherCategories, offsetFor(otherCategories, 1)),
+  ].slice(0, limit)
+}
+
 export const getProductById = (id) => productCatalog.find((product) => product.id === id) || productCatalog[0]
 
 export const getProductBySlug = (slug) => productCatalog.find((product) => product.slug === slug) || productCatalog[0]

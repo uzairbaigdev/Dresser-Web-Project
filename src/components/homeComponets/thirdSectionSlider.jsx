@@ -200,7 +200,7 @@ const ThirdSectionSlider = () => {
       <style>{`
         .tss {
           width: 100%;
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          font-family: var(--font-sans);
           touch-action: pan-y;
         }
 
@@ -214,7 +214,7 @@ const ThirdSectionSlider = () => {
         .tss__media {
           position: relative;
           overflow: hidden;
-          background: rgba(23, 19, 16, 0.06);
+          background: linear-gradient(145deg, var(--brand-forest), var(--brand-forest-deep));
         }
 
         .tss__track {
@@ -267,7 +267,7 @@ const ThirdSectionSlider = () => {
           border-radius: 50%;
           border: 1px solid rgba(251, 247, 242, 0.5);
           background: rgba(12, 10, 9, 0.25);
-          color: #fbf7f2;
+          color: var(--brand-paper);
           font-size: 1.4rem;
           line-height: 1;
           cursor: pointer;
@@ -283,7 +283,7 @@ const ThirdSectionSlider = () => {
         }
 
         .tss__arrow:focus-visible {
-          outline: 2px solid #d9b98a;
+          outline: 2px solid var(--brand-copper-light);
           outline-offset: 2px;
         }
 
@@ -300,7 +300,7 @@ const ThirdSectionSlider = () => {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          background: #fbf7f2;
+          background: var(--brand-paper);
           padding: 48px 7vw;
         }
 
@@ -328,10 +328,11 @@ const ThirdSectionSlider = () => {
         }
 
         .tss__heading {
+          font-family: var(--font-serif);
           font-size: clamp(1.7rem, 2.8vw, 2.4rem);
           line-height: 1.25;
           font-weight: 700;
-          color: #171310;
+          color: var(--brand-ink);
           margin: 0 0 0.9rem;
         }
 
@@ -344,8 +345,8 @@ const ThirdSectionSlider = () => {
 
         .tss__cta {
           display: inline-block;
-          background: #171310;
-          color: #fbf7f2;
+          background: var(--brand-forest);
+          color: var(--brand-paper);
           text-decoration: none;
           font-size: 0.9rem;
           font-weight: 600;
@@ -355,12 +356,12 @@ const ThirdSectionSlider = () => {
         }
 
         .tss__cta:hover {
-          background: #6e2a3a;
+          background: var(--brand-forest-deep);
           transform: translateY(-1px);
         }
 
         .tss__cta:focus-visible {
-          outline: 2px solid #6e2a3a;
+          outline: 2px solid var(--brand-copper);
           outline-offset: 3px;
         }
 
@@ -382,14 +383,14 @@ const ThirdSectionSlider = () => {
         }
 
         .tss__dot--active {
-          background: #171310;
-          border-color: #171310;
+          background: var(--brand-forest);
+          border-color: var(--brand-forest);
           width: 22px;
           border-radius: 5px;
         }
 
         .tss__dot:focus-visible {
-          outline: 2px solid #6e2a3a;
+          outline: 2px solid var(--brand-copper);
           outline-offset: 2px;
         }
 

@@ -95,20 +95,18 @@ const FourthSection = ({ heroImageUrl }) => {
       </section>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
         .zb-footer {
-          --zb-navy: #123a76;
-          --zb-navy-deep: #0d2c5c;
-          --zb-ink: #201c16;
-          --zb-ink-soft: #6d6659;
-          --zb-card-bg: #fbf9f5;
-          --zb-band-bg-1: #e7ded0;
-          --zb-band-bg-2: #cabfa8;
-          --zb-cream-text: #f2f0ea;
+          --zb-navy: var(--brand-forest);
+          --zb-navy-deep: var(--brand-forest-deep);
+          --zb-ink: var(--brand-ink);
+          --zb-ink-soft: var(--brand-muted);
+          --zb-card-bg: var(--brand-paper);
+          --zb-band-bg-1: var(--brand-paper);
+          --zb-band-bg-2: var(--brand-paper-deep);
+          --zb-cream-text: var(--brand-paper);
           --zb-hero-photo: url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=2200&q=88');
 
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          font-family: var(--font-sans);
           color: var(--zb-ink);
         }
 
@@ -185,7 +183,7 @@ const FourthSection = ({ heroImageUrl }) => {
         .zb-stat__value {
           font-size: clamp(2.1rem, 4.4vw, 2.75rem);
           font-weight: 800;
-          letter-spacing: -0.01em;
+          letter-spacing: 0;
           line-height: 1;
         }
 
@@ -277,7 +275,7 @@ const FourthSection = ({ heroImageUrl }) => {
         }
 
         .zb-btn-allow {
-          background: linear-gradient(180deg, #ffffff, #edf1f8);
+          background: linear-gradient(180deg, var(--brand-paper), var(--brand-paper-deep));
           color: var(--zb-navy);
           border: none;
           border-radius: 8px;
@@ -303,7 +301,7 @@ const FourthSection = ({ heroImageUrl }) => {
         .zb-btn-decline {
           background: none;
           border: none;
-          color: #cbd6ec;
+          color: var(--brand-paper-deep);
           font-size: 0.88rem;
           font-weight: 600;
           cursor: pointer;

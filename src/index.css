@@ -1,25 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
-  --primary: 222.2 47.4% 11.2%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 214.3 31.8% 91.9%;
-  --input: 214.3 31.8% 91.9%;
-  --ring: 222.2 84% 4.9%;
+  --brand-paper: #f7f5ef;
+  --brand-paper-deep: #ebe7dc;
+  --brand-ink: #282b25;
+  --brand-forest: #465546;
+  --brand-forest-deep: #303d32;
+  --brand-copper: #ad7758;
+  --brand-copper-deep: #8f5f42;
+  --brand-copper-light: #d1b08a;
+  --brand-muted: #70766d;
+  --brand-border: #d9d8cf;
+  --background: 45 33% 95%;
+  --foreground: 90 7% 16%;
+  --card: 45 33% 97%;
+  --card-foreground: 90 7% 16%;
+  --popover: 45 33% 97%;
+  --popover-foreground: 90 7% 16%;
+  --primary: 120 10% 30%;
+  --primary-foreground: 45 33% 97%;
+  --secondary: 44 24% 90%;
+  --secondary-foreground: 90 7% 16%;
+  --muted: 44 24% 90%;
+  --muted-foreground: 90 4% 43%;
+  --accent: 28 36% 87%;
+  --accent-foreground: 90 7% 16%;
+  --destructive: 0 66% 47%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 48 13% 85%;
+  --input: 48 13% 85%;
+  --ring: 120 10% 30%;
   --radius: 0.5rem;
 }
 
@@ -28,16 +39,17 @@
 }
 
 html {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
+  background-color: var(--brand-paper);
+  color: var(--brand-ink);
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background: hsl(var(--background));
-  color: hsl(var(--foreground));
-  font-family: Inter, Arial, sans-serif;
+  background: var(--brand-paper);
+  color: var(--brand-ink);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.5;
 }
 
 @theme inline {
@@ -60,5 +72,30 @@ body {
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
+  --font-sans: 'DM Sans', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --color-black: var(--brand-ink);
+  --color-stone-50: #faf9f5;
+  --color-stone-100: #f3f1e9;
+  --color-stone-200: #e5e1d7;
+  --color-stone-300: #d6d1c5;
+  --color-stone-400: #aba99f;
+  --color-stone-500: #7c7d72;
+  --color-stone-600: #62675e;
+  --color-stone-700: #4c554d;
+  --color-stone-800: #364039;
+  --color-stone-900: #252c26;
+  --color-stone-950: #151b16;
+  --color-neutral-50: #faf9f5;
+  --color-neutral-100: #f3f1e9;
+  --color-neutral-200: #e5e1d7;
+  --color-neutral-300: #d6d1c5;
+  --color-neutral-400: #aba99f;
+  --color-neutral-500: #7c7d72;
+  --color-neutral-600: #62675e;
+  --color-neutral-700: #4c554d;
+  --color-neutral-800: #364039;
+  --color-neutral-900: #252c26;
+  --color-neutral-950: #151b16;
   --radius: var(--radius);
 }

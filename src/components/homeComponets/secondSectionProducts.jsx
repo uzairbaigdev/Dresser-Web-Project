@@ -103,9 +103,9 @@ const Products = () => {
         .wp {
           width: 100%;
           padding: 64px 6vw;
-          background: #fbf7f2;
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-          color: #171310;
+          background: var(--brand-paper);
+          font-family: var(--font-sans);
+          color: var(--brand-ink);
           box-sizing: border-box;
         }
 
@@ -117,12 +117,12 @@ const Products = () => {
         .wp__eyebrow {
           display: inline-block;
           font-size: 0.85rem;
-          color: #6e2a3a;
+          color: var(--brand-forest);
           margin-bottom: 0.5rem;
         }
 
         .wp__heading {
-          font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+          font-family: var(--font-serif);
           font-size: clamp(1.7rem, 2.6vw, 2.3rem);
           line-height: 1.2;
           margin: 0 0 0.5rem;
@@ -158,17 +158,17 @@ const Products = () => {
         }
 
         .wp__tab:hover {
-          color: #171310;
+          color: var(--brand-ink);
           background: rgba(23, 19, 16, 0.05);
         }
 
         .wp__tab--active {
-          background: #171310;
-          color: #fbf7f2;
+          background: var(--brand-forest);
+          color: var(--brand-paper);
         }
 
         .wp__tab:focus-visible {
-          outline: 2px solid #6e2a3a;
+          outline: 2px solid var(--brand-copper);
           outline-offset: 2px;
         }
 
@@ -194,7 +194,7 @@ const Products = () => {
           aspect-ratio: 3 / 4;
           border-radius: 0;
           overflow: hidden;
-          background: #eee9e3;
+          background: var(--brand-paper-deep);
         }
 
         .wp-card__image {
@@ -232,8 +232,8 @@ const Products = () => {
           position: absolute;
           top: 14px;
           left: 14px;
-          background: #fbf7f2;
-          color: #171310;
+          background: var(--brand-paper);
+          color: var(--brand-ink);
           font-size: 0.68rem;
           padding: 6px 9px;
           letter-spacing: 0.05em;
@@ -248,7 +248,7 @@ const Products = () => {
           left: 12px;
           padding: 11px 12px;
           background: rgba(251, 247, 242, 0.95);
-          color: #171310;
+          color: var(--brand-ink);
           font-size: 0.72rem;
           letter-spacing: 0.08em;
           text-align: center;
@@ -272,7 +272,7 @@ const Products = () => {
         .wp-card__name {
           font-size: 0.9rem;
           font-weight: 500;
-          color: #171310;
+          color: var(--brand-ink);
           margin: 4px 0 7px;
           line-height: 1.35;
         }
@@ -290,12 +290,12 @@ const Products = () => {
           display: block;
           font-size: 0.86rem;
           font-weight: 500;
-          color: #171310;
+          color: var(--brand-ink);
           margin: 0;
         }
 
         .wp-card__link:focus-visible {
-          outline: 2px solid #6e2a3a;
+          outline: 2px solid var(--brand-copper);
           outline-offset: 3px;
           border-radius: 0;
         }
@@ -310,13 +310,13 @@ const Products = () => {
           border-radius: 6px;
           border: 1px dashed rgba(23, 19, 16, 0.25);
           text-decoration: none;
-          color: #171310;
+          color: var(--brand-ink);
           padding: 20px;
           transition: border-color 200ms ease, background 200ms ease;
         }
 
         .wp-discover:hover {
-          border-color: #6e2a3a;
+          border-color: var(--brand-forest);
           background: rgba(110, 42, 58, 0.04);
         }
 

@@ -13,10 +13,8 @@ import Footer from '../../components/homeComponets/footer.jsx';
 /* ------------------------------ Global styles ----------------------------- */
 
 const PAGE_STYLES = `
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
-
-  .dr-display { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; }
-  .dr-body    { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; }
+  .dr-display { font-family: var(--font-serif); }
+  .dr-body    { font-family: var(--font-sans); }
 
   .dr-reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
   .dr-reveal--in { opacity: 1; transform: none; }

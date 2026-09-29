@@ -17,10 +17,8 @@ import Footer from '../../components/homeComponets/footer.jsx';
 /* ------------------------------ Global styles ----------------------------- */
 
 const PAGE_STYLES = `
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
-
-  .dr-display { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; }
-  .dr-body    { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; }
+  .dr-display { font-family: var(--font-serif); }
+  .dr-body    { font-family: var(--font-sans); }
 
   .dr-reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
   .dr-reveal--in { opacity: 1; transform: none; }
@@ -259,11 +257,12 @@ const SectionHeading = ({ id, eyebrow, title, description, tone = "light", align
 };
 
 /** Image that quietly disappears on error, revealing the container's fallback colour. */
-const Photo = ({ id, alt, width = 1200, className = "" }) => (
+const Photo = ({ id, alt, width = 1200, className = "", loading = "lazy", fetchPriority }) => (
   <img
     src={photoUrl(id, width)}
     alt={alt}
-    loading="lazy"
+    loading={loading}
+    fetchPriority={fetchPriority}
     decoding="async"
     onError={(event) => {
       event.currentTarget.style.display = "none";
@@ -366,7 +365,7 @@ const DETAIL_ROWS = [
 const Hero = () => (
   <section aria-labelledby="contact-hero-title" className="relative isolate overflow-hidden bg-black">
     <div className="absolute inset-0 -z-10" aria-hidden="true">
-      <Photo id={PHOTOS.hero} alt="" width={2000} />
+      <Photo id={PHOTOS.hero} alt="" width={2000} loading="eager" fetchPriority="high" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/50" />
     </div>
 
@@ -783,7 +782,7 @@ const MapIllustration = () => (
     </text>
     <g transform="translate(380 190)">
       <circle className="dr-ping" r="16" fill="#111827" />
-      <path d="M0 -34c-13 0-23 10-23 23 0 17 23 40 23 40s23-23 23-40c0-13-10-23-23-23z" fill="#000000" />
+      <path d="M0 -34c-13 0-23 10-23 23 0 17 23 40 23 40s23-23 23-40c0-13-10-23-23-23z" fill="var(--brand-forest)" />
       <circle cy="-11" r="8" fill="#ffffff" />
     </g>
   </svg>

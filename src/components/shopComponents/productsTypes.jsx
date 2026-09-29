@@ -46,7 +46,7 @@ const ProductsTypes = ({ types = DRESS_TYPES, activeType, onSelect }) => {
   }
 
   return (
-    <section className="mt-[88px] border-b border-stone-200 bg-[#fbfaf7] py-6">
+    <section className="mt-[88px] border-b border-stone-200 bg-[var(--brand-paper)] py-6">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
         <h2 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-stone-500">
           Shop by Category
@@ -54,8 +54,8 @@ const ProductsTypes = ({ types = DRESS_TYPES, activeType, onSelect }) => {
 
         <div className="relative">
           {/* Edge fades hint that the row scrolls */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-[#fbfaf7] to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#fbfaf7] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-[var(--brand-paper)] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[var(--brand-paper)] to-transparent" />
 
           <div className="no-scrollbar flex snap-x gap-3 overflow-x-auto scroll-smooth">
             {types.map((type) => {

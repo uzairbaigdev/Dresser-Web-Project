@@ -419,7 +419,7 @@ const SearchBox = ({
                     <form
                         role="search"
                         onSubmit={handleSubmit}
-                        className="flex items-center bg-[#FAF7F2] border border-neutral-300 rounded-full pl-2 pr-1.5 py-1.5 shadow-[0_10px_30px_rgba(0,0,0,0.18)] transition-[box-shadow,transform] duration-200 ease-out focus-within:shadow-[0_14px_36px_rgba(0,0,0,0.22)] focus-within:-translate-y-px"
+                        className="flex items-center bg-[var(--brand-paper)] border border-neutral-300 rounded-full pl-2 pr-1.5 py-1.5 shadow-[0_10px_30px_rgba(0,0,0,0.18)] transition-[box-shadow,transform] duration-200 ease-out focus-within:shadow-[0_14px_36px_rgba(0,0,0,0.22)] focus-within:-translate-y-px"
                     >
                         <div className="relative flex-shrink-0" onBlur={handleCategoryBlur}>
                             <button

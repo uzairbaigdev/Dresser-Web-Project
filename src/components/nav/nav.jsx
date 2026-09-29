@@ -167,7 +167,7 @@ const Nav = ({ brandName = 'Dresser', cartCount = 0, forceSolid = false }) => {
       <header
         className={`fixed inset-x-0 top-0 z-50 w-full transition-colors duration-300 ${
           solid
-            ? 'border-b border-stone-200 bg-[#fbfaf7] text-stone-900 shadow-sm'
+            ? 'border-b border-stone-200 bg-[var(--brand-paper)] text-stone-900 shadow-sm'
             : 'border-b border-transparent bg-transparent text-white'
         }`}
       >
@@ -182,7 +182,7 @@ const Nav = ({ brandName = 'Dresser', cartCount = 0, forceSolid = false }) => {
             onFocus={openMenu}
             className="group relative flex h-10 w-10 items-center justify-center transition-all duration-200"
           >
-            <span className="absolute inset-y-2 left-0 w-[2px] rounded-full bg-white opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+            <span className="absolute inset-y-2 left-0 w-[2px] rounded-full bg-current opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
             <IconMenu />
           </button>
 
@@ -193,21 +193,21 @@ const Nav = ({ brandName = 'Dresser', cartCount = 0, forceSolid = false }) => {
           </Link>
 
           <div className="flex items-center gap-5">
-            <button aria-label="Search" className="group relative flex h-10 w-10 items-center justify-center transition-all duration-200">
-              <span className="absolute inset-y-2 left-0 w-[2px] rounded-full bg-white opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+            <Link to="/search" onClick={closeMenu} aria-label="Search" className="group relative flex h-10 w-10 items-center justify-center transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-forest)]">
+              <span className="absolute inset-y-2 left-0 w-[2px] rounded-full bg-current opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
               <IconSearch />
-            </button>
-            <button aria-label="Account" className="group relative flex h-10 w-10 items-center justify-center transition-all duration-200">
-              <span className="absolute inset-y-2 left-0 w-[2px] rounded-full bg-white opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+            </Link>
+            <Link to="/" onClick={closeMenu} aria-label="Home" className="group relative flex h-10 w-10 items-center justify-center transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-forest)]">
+              <span className="absolute inset-y-2 left-0 w-[2px] rounded-full bg-current opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
               <IconAccount />
-            </button>
-            <button aria-label="Cart" className="group relative flex h-10 w-10 items-center justify-center transition-all duration-200">
-              <span className="absolute inset-y-2 left-0 w-[2px] rounded-full bg-white opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+            </Link>
+            <Link to="/shop" onClick={closeMenu} aria-label="Shop" className="group relative flex h-10 w-10 items-center justify-center transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-forest)]">
+              <span className="absolute inset-y-2 left-0 w-[2px] rounded-full bg-current opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
               <IconCart />
               <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-stone-900 text-[10px] text-white">
                 {cartCount}
               </span>
-            </button>
+            </Link>
           </div>
         </div>
       </header>
@@ -223,7 +223,7 @@ const Nav = ({ brandName = 'Dresser', cartCount = 0, forceSolid = false }) => {
 
       <aside
         aria-label="Primary"
-        className={`fixed inset-y-0 left-0 z-[70] flex w-[85vw] max-w-sm flex-col overflow-hidden border-r border-white/10 bg-stone-900/70 text-white shadow-2xl backdrop-blur-xl transition-transform duration-300 ease-out ${
+        className={`fixed inset-y-0 left-0 z-[70] flex w-[85vw] max-w-sm flex-col overflow-hidden border-r border-white/10 bg-stone-900 text-white shadow-2xl transition-transform duration-300 ease-out ${
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
