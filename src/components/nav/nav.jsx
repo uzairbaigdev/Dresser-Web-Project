@@ -1,9 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-
-/* -------------------------------------------------------------------------
- * Icons — small, dependency-free line icons.
- * ---------------------------------------------------------------------- */
+import { useCart } from '../../context/CartContext.jsx'
 
 const IconProps = { fill: 'none', stroke: 'currentColor', strokeWidth: 1.7 }
 
@@ -48,9 +45,6 @@ const IconChevronRight = (props) => (
   </svg>
 )
 
-/* Minimal monogram mark shown next to the wordmark. Swap for a real logo
- * <img> whenever one is available — it inherits `currentColor` so it
- * matches the header's white/charcoal text automatically. */
 const LogoMark = (props) => (
   <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" {...props}>
     <circle cx="20" cy="20" r="18" />
@@ -58,7 +52,6 @@ const LogoMark = (props) => (
   </svg>
 )
 
-/* Row icons for the drawer list. */
 const IconHome = (props) => (
   <svg viewBox="0 0 24 24" className="h-5 w-5" {...IconProps} {...props}>
     <path d="M4 11l8-7 8 7" />
@@ -87,14 +80,6 @@ const IconContact = (props) => (
   </svg>
 )
 
-/* -------------------------------------------------------------------------
- * Drawer content
- * ---------------------------------------------------------------------- */
-
-// Dummy photos from Lorem Picsum — a free, keyless placeholder-image
-// service (https://picsum.photos). A fixed seed per slide means the same
-// photo loads every time instead of a random one. Replace `image` with
-// your own product photography URL whenever it's ready.
 const SLIDES = [
   { title: 'New Arrivals', subtitle: 'Fresh styles, just landed', image: 'https://picsum.photos/seed/dresser-new/800/600' },
   { title: 'Best Sellers', subtitle: "This season's most-loved picks", image: 'https://picsum.photos/seed/dresser-best/800/600' },
@@ -105,21 +90,18 @@ const NAV_LINKS = [
   { label: 'Home', to: '/', icon: IconHome },
   { label: 'About', to: '/about', icon: IconAbout },
   { label: 'Shop', to: '/shop', icon: IconProduct },
-  { label: 'Search', to: '/search', icon: IconProduct },
   { label: 'Contact', to: '/contact', icon: IconContact },
 ]
 
-/* -------------------------------------------------------------------------
- * Component
- *
- * Header: fixed, transparent over the hero (white text/icons), fading to
- * a solid off-white bar once the page scrolls.
- * Menu: clicking the left icon opens an off-canvas drawer — a frosted,
- * translucent panel with an auto-advancing picture slider on top and the
- * Home / About / Product / Contact list, each with its own icon, below.
- * ---------------------------------------------------------------------- */
+const formatPrice = (price) =>
+  new Intl.NumberFormat('en-PK', {
+    style: 'currency',
+    currency: 'PKR',
+    maximumFractionDigits: 0,
+  }).format(Number(price) || 0)
 
-const Nav = ({ brandName = 'Dresser', cartCount = 0, forceSolid = false }) => {
+const Nav = ({ brandName = 'Dresser', forceSolid = false }) => {
+  const { items, cartCount, subtotal, isCartOpen, toggleCart, closeCart, updateQuantity, removeItem } = useCart()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [slideIndex, setSlideIndex] = useState(0)
@@ -133,33 +115,36 @@ const Nav = ({ brandName = 'Dresser', cartCount = 0, forceSolid = false }) => {
 
   useEffect(() => {
     const onKeyDown = (e) => {
-      if (e.key === 'Escape') setIsMenuOpen(false)
+      if (e.key === 'Escape') {
+        setIsMenuOpen(false)
+        closeCart()
+      }
     }
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
-  }, [])
+  }, [closeCart])
 
-  // Lock page scroll while the drawer is open.
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? 'hidden' : ''
+    document.body.style.overflow = isMenuOpen || isCartOpen ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
-  }, [isMenuOpen])
+  }, [isCartOpen, isMenuOpen])
 
-  // Auto-advance the slider only while the drawer is actually open.
   useEffect(() => {
     if (!isMenuOpen) return undefined
-    setSlideIndex(0)
+
     const id = setInterval(() => {
-      setSlideIndex((i) => (i + 1) % SLIDES.length)
+      setSlideIndex((index) => (index + 1) % SLIDES.length)
     }, 3500)
     return () => clearInterval(id)
   }, [isMenuOpen])
 
-  const openMenu = () => setIsMenuOpen(true)
+  const openMenu = () => {
+    setSlideIndex(0)
+    setIsMenuOpen(true)
+  }
   const closeMenu = () => setIsMenuOpen(false)
-
   const solid = forceSolid || isScrolled
 
   return (
@@ -186,14 +171,13 @@ const Nav = ({ brandName = 'Dresser', cartCount = 0, forceSolid = false }) => {
             <IconMenu />
           </button>
 
-          {/* Brand mark — logo + wordmark, always centered */}
           <Link to="/" onClick={closeMenu} className="absolute left-1/2 flex -translate-x-1/2 items-center gap-2">
             <LogoMark className="h-7 w-7 shrink-0" />
             <span className="text-xl font-bold uppercase tracking-[0.22em] sm:text-2xl">{brandName}</span>
           </Link>
 
           <div className="flex items-center gap-5">
-            <Link to="/search" onClick={closeMenu} aria-label="Search" className="group relative flex h-10 w-10 items-center justify-center transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-forest)]">
+            <Link to="/shop" onClick={closeMenu} aria-label="Search products" className="group relative flex h-10 w-10 items-center justify-center transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-forest)]">
               <span className="absolute inset-y-2 left-0 w-[2px] rounded-full bg-current opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
               <IconSearch />
             </Link>
@@ -201,18 +185,28 @@ const Nav = ({ brandName = 'Dresser', cartCount = 0, forceSolid = false }) => {
               <span className="absolute inset-y-2 left-0 w-[2px] rounded-full bg-current opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
               <IconAccount />
             </Link>
-            <Link to="/shop" onClick={closeMenu} aria-label="Shop" className="group relative flex h-10 w-10 items-center justify-center transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-forest)]">
+            <button
+              type="button"
+              aria-label="Open cart"
+              aria-expanded={isCartOpen}
+              onClick={() => {
+                closeMenu()
+                toggleCart()
+              }}
+              className="group relative flex h-10 w-10 items-center justify-center transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-forest)]"
+            >
               <span className="absolute inset-y-2 left-0 w-[2px] rounded-full bg-current opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
               <IconCart />
-              <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-stone-900 text-[10px] text-white">
-                {cartCount}
-              </span>
-            </Link>
+              {cartCount > 0 && (
+                <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-stone-900 px-1 text-[10px] text-white">
+                  {cartCount}
+                </span>
+              )}
+            </button>
           </div>
         </div>
       </header>
 
-      {/* ---------------- Off-canvas drawer ---------------- */}
       <div
         aria-hidden={!isMenuOpen}
         onClick={closeMenu}
@@ -227,12 +221,11 @@ const Nav = ({ brandName = 'Dresser', cartCount = 0, forceSolid = false }) => {
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        {/* Picture slider */}
         <div className="relative h-48 w-full shrink-0 overflow-hidden bg-stone-800">
-          {SLIDES.map((slide, i) => (
+          {SLIDES.map((slide, index) => (
             <div
               key={slide.title}
-              className={`absolute inset-0 transition-opacity duration-700 ${i === slideIndex ? 'opacity-100' : 'opacity-0'}`}
+              className={`absolute inset-0 transition-opacity duration-700 ${index === slideIndex ? 'opacity-100' : 'opacity-0'}`}
             >
               <img src={slide.image} alt={slide.title} className="h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
@@ -253,19 +246,18 @@ const Nav = ({ brandName = 'Dresser', cartCount = 0, forceSolid = false }) => {
           </button>
 
           <div className="absolute bottom-3 right-3 z-10 flex gap-1.5">
-            {SLIDES.map((slide, i) => (
+            {SLIDES.map((slide, index) => (
               <button
                 key={slide.title}
                 type="button"
-                aria-label={`Show slide ${i + 1}`}
-                onClick={() => setSlideIndex(i)}
-                className={`h-1.5 rounded-full transition-all ${i === slideIndex ? 'w-5 bg-white' : 'w-1.5 bg-white/40'}`}
+                aria-label={`Show slide ${index + 1}`}
+                onClick={() => setSlideIndex(index)}
+                className={`h-1.5 rounded-full transition-all ${index === slideIndex ? 'w-5 bg-white' : 'w-1.5 bg-white/40'}`}
               />
             ))}
           </div>
         </div>
 
-        {/* Link list */}
         <nav className="flex flex-col divide-y divide-white/10 border-t border-white/10">
           {NAV_LINKS.map(({ label, to, icon: Icon }) => (
             <Link
@@ -283,6 +275,110 @@ const Nav = ({ brandName = 'Dresser', cartCount = 0, forceSolid = false }) => {
             </Link>
           ))}
         </nav>
+      </aside>
+
+      <div
+        aria-hidden={!isCartOpen}
+        onClick={closeCart}
+        className={`fixed inset-0 z-[60] bg-black/40 backdrop-blur-[2px] transition-opacity duration-300 ${
+          isCartOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+      />
+
+      <aside
+        aria-label="Shopping cart"
+        className={`fixed inset-y-0 right-0 z-[70] flex w-full max-w-md flex-col border-l border-stone-200 bg-[var(--brand-paper)] shadow-2xl transition-transform duration-300 ease-out ${
+          isCartOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex items-center justify-between border-b border-stone-200 px-5 py-4">
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">Your cart</p>
+            <h2 className="mt-1 text-xl font-semibold text-stone-900">{cartCount} item{cartCount === 1 ? '' : 's'}</h2>
+          </div>
+          <button
+            type="button"
+            aria-label="Close cart"
+            onClick={closeCart}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-stone-300 bg-white text-stone-700 transition hover:border-stone-900 hover:text-stone-900"
+          >
+            <IconClose />
+          </button>
+        </div>
+
+        {items.length === 0 ? (
+          <div className="flex flex-1 flex-col items-center justify-center px-6 text-center">
+            <p className="text-lg font-medium text-stone-900">Your cart is empty</p>
+            <p className="mt-2 text-sm text-stone-600">Add a few favorites to continue shopping.</p>
+            <Link
+              to="/shop"
+              onClick={closeCart}
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-[var(--brand-forest)] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[var(--brand-forest-deep)]"
+            >
+              Browse collection
+            </Link>
+          </div>
+        ) : (
+          <>
+            <div className="flex-1 space-y-4 overflow-y-auto px-5 py-5">
+              {items.map((item) => (
+                <div key={item.id} className="rounded-2xl border border-stone-200 bg-white p-3 shadow-sm">
+                  <Link to={`/product/${item.id}`} onClick={closeCart} className="flex gap-3">
+                    <img src={item.image || 'https://picsum.photos/seed/cart-fallback/300/400'} alt={item.name} className="h-20 w-16 rounded-xl object-cover" />
+                    <div className="min-w-0 flex-1">
+                      <p className="line-clamp-2 text-sm font-medium text-stone-900">{item.name}</p>
+                      <p className="mt-1 text-sm font-semibold text-stone-900">{formatPrice(item.price)}</p>
+                    </div>
+                  </Link>
+
+                  <div className="mt-3 flex items-center justify-between">
+                    <div className="flex items-center rounded-full border border-stone-300 bg-[var(--brand-paper)]">
+                      <button
+                        type="button"
+                        aria-label={`Decrease quantity of ${item.name}`}
+                        onClick={() => updateQuantity(item.id, -1)}
+                        className="h-9 w-9 text-lg text-stone-700 transition hover:text-stone-900"
+                      >
+                        -
+                      </button>
+                      <span className="min-w-8 text-center text-sm font-medium text-stone-900">{item.quantity}</span>
+                      <button
+                        type="button"
+                        aria-label={`Increase quantity of ${item.name}`}
+                        onClick={() => updateQuantity(item.id, 1)}
+                        className="h-9 w-9 text-lg text-stone-700 transition hover:text-stone-900"
+                      >
+                        +
+                      </button>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => removeItem(item.id)}
+                      className="text-xs font-medium uppercase tracking-[0.12em] text-stone-500 transition hover:text-stone-900"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="border-t border-stone-200 bg-white px-5 py-4">
+              <div className="flex items-center justify-between text-sm text-stone-600">
+                <span>Subtotal</span>
+                <span className="font-semibold text-stone-900">{formatPrice(subtotal)}</span>
+              </div>
+              <Link
+                to="/checkout"
+                onClick={closeCart}
+                className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-[var(--brand-forest)] px-5 py-3 text-sm font-medium text-white transition hover:bg-[var(--brand-forest-deep)]"
+              >
+                Proceed to checkout
+              </Link>
+            </div>
+          </>
+        )}
       </aside>
     </>
   )

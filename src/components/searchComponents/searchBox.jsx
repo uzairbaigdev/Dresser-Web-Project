@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo, useId } from 'react'
+import { useState, useEffect, useRef, useMemo, useId } from 'react'
 import { Link } from 'react-router-dom'
 import { DRESS_TYPES } from '../shopComponents/productsTypes.jsx'
 

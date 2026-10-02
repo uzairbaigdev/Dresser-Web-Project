@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+﻿import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 // Replace these slides with your real collections, images and copy.
@@ -10,10 +10,10 @@ const slides = [
     kicker: 'New In',
     heading: 'Fresh Styles, Every Week',
     description:
-      'Discover pieces made for the way you actually live — versatile, comfortable, effortlessly stylish.',
+      'Discover pieces made for the way you actually live â€” versatile, comfortable, effortlessly stylish.',
     ctaLabel: 'Shop New Arrivals',
-    ctaHref: '/search',
-    trust: '★★★★★ 4.8 · 70,000+ happy customers',
+    ctaHref: '/shop',
+    trust: 'â˜…â˜…â˜…â˜…â˜… 4.8 Â· 70,000+ happy customers',
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const slides = [
     description:
       'Tops and bottoms designed to mix, match and move with you all day long.',
     ctaLabel: 'Explore Western Wear',
-    ctaHref: '/search',
+    ctaHref: '/shop',
     trust: 'Our most re-ordered western edit yet',
   },
   {
@@ -32,9 +32,9 @@ const slides = [
     kicker: 'Fabric First',
     heading: 'Pure Cotton, Every Metre',
     description:
-      'Breathable fabric and fresh prints — your next favourite outfit starts here.',
+      'Breathable fabric and fresh prints â€” your next favourite outfit starts here.',
     ctaLabel: 'Shop Unstitched',
-    ctaHref: '/search',
+    ctaHref: '/shop',
     trust: '4.9/5 rated by our customers',
   },
   {
@@ -45,8 +45,8 @@ const slides = [
     description:
       'Intricate embroidery and rich fabric for the moments that matter most.',
     ctaLabel: 'Shop the Collection',
-    ctaHref: '/search',
-    trust: '★★★★★ 4.9 · 20,000+ happy customers',
+    ctaHref: '/shop',
+    trust: 'â˜…â˜…â˜…â˜…â˜… 4.9 Â· 20,000+ happy customers',
   },
   {
     id: 5,
@@ -54,10 +54,10 @@ const slides = [
     kicker: 'Elevated Essentials',
     heading: 'Luxury You Can Feel',
     description:
-      'Premium embroidery and considered tailoring — ready-to-wear that feels timeless.',
+      'Premium embroidery and considered tailoring â€” ready-to-wear that feels timeless.',
     ctaLabel: 'Discover Luxury Pret',
-    ctaHref: '/search',
-    trust: '★★★★★ 4.8 · 30,500+ shoppers',
+    ctaHref: '/shop',
+    trust: 'â˜…â˜…â˜…â˜…â˜… 4.8 Â· 30,500+ shoppers',
   },
   {
     id: 6,
@@ -67,14 +67,14 @@ const slides = [
     description:
       'Premium fabric and clean cuts that move easily from home to event.',
     ctaLabel: 'Shop Menswear',
-    ctaHref: '/search',
-    trust: '★★★★★ 4.8 · 100,000+ satisfied customers',
+    ctaHref: '/shop',
+    trust: 'â˜…â˜…â˜…â˜…â˜… 4.8 Â· 100,000+ satisfied customers',
   },
 ]
 
 const AUTOPLAY_DELAY = 3000
 
-const firstSectionSlider = () => {
+const FirstSectionSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0)
 
   const goToNext = useCallback(() => {
@@ -263,4 +263,4 @@ const firstSectionSlider = () => {
   )
 }
 
-export default firstSectionSlider
+export default FirstSectionSlider

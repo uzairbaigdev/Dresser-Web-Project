@@ -121,14 +121,14 @@ const CHANNELS = [
   {
     icon: "phone",
     title: "Call us",
-    text: "Speak with a furniture specialist every day between 9:00 AM and 9:00 PM, Pakistan time.",
+    text: "Speak with a style specialist every day between 9:00 AM and 9:00 PM, Pakistan time.",
     action: BUSINESS.phone,
     href: BUSINESS.phoneHref,
   },
   {
     icon: "pin",
     title: "Visit the studio",
-    text: "Sit on the sofas, touch the fabrics and meet our designers, by appointment or walk-in.",
+    text: "Try on silhouettes, feel the fabrics and meet our styling team, by appointment or walk-in.",
     action: "18 Clifton Road, Karachi",
     href: BUSINESS.mapsUrl,
     external: true,
@@ -150,14 +150,14 @@ const FORM_PROMISES = [
 
 const INQUIRY_TYPES = [
   { value: "styling", label: "Styling consultation" },
-  { value: "custom", label: "Custom furniture" },
+  { value: "custom", label: "Custom styling" },
   { value: "wholesale", label: "Wholesale" },
   { value: "support", label: "Support" },
   { value: "delivery", label: "Delivery" },
 ];
 
 const AMENITIES = [
-  { icon: "sofa", label: "Six fully styled room settings" },
+  { icon: "sofa", label: "Six curated style edits" },
   { icon: "swatch", label: "Fabric & finish library" },
   { icon: "coffee", label: "Complimentary refreshments" },
   { icon: "car", label: "Free on-site parking" },
@@ -166,27 +166,27 @@ const AMENITIES = [
 const FAQS = [
   {
     q: "How long does delivery take?",
-    a: "In-stock pieces are delivered within 3–5 working days in Karachi and 5–8 working days nationwide. Made-to-order and custom pieces are crafted in 6–8 weeks, and we confirm your delivery window in writing before production begins.",
+    a: "In-stock pieces are dispatched within 3–5 working days in Karachi and 5–8 working days nationwide. Bespoke tailoring and custom styling requests are usually completed within 6–8 weeks, and we confirm the timeline before production begins.",
   },
   {
-    q: "Can I customise dimensions, fabrics and finishes?",
-    a: "Yes. Most sofas, beds, tables and storage pieces can be made to measure. Choose from over 120 fabrics and 18 wood finishes, and our design team will prepare a dimensioned drawing for your approval.",
+    q: "Can I customise the fit, fabric or detailing?",
+    a: "Yes. Most silhouettes can be tailored to suit your fit preferences, fabric choice and finishing details. Choose from a curated collection of fabrics and embellishments, and our styling team will guide you through the best options for your look.",
   },
   {
     q: "Do you offer complimentary styling consultations?",
-    a: "Every customer is entitled to a free 45-minute consultation, in the studio or over video. Bring your floor plan, photos and inspiration, and we will suggest layouts, palettes and proportions.",
+    a: "Every customer is entitled to a free 45-minute consultation, in the studio or over video. Bring your inspiration, event details and preferred palette, and we will suggest silhouettes, fabrics and finishing touches.",
   },
   {
     q: "What is your return and warranty policy?",
-    a: "In-stock items can be returned within 14 days in original condition. Every Dresser frame carries a 10-year structural warranty, and upholstery and finishes are covered for 2 years. Custom orders are non-returnable but fully covered by warranty.",
+    a: "In-stock items can be returned within 14 days in original condition. Every Dresser piece is supported by a 10-year quality promise, with fabric and finishing coverage where applicable. Custom orders are non-returnable but fully supported by our care team.",
   },
   {
     q: "Which payment options are available?",
-    a: "We accept major credit and debit cards, bank transfer, and cash on delivery within Karachi. Custom orders require a 50% deposit, with the balance due before delivery. Selected cards offer 0% instalment plans on orders above PKR 150,000.",
+    a: "We accept major credit and debit cards, bank transfer, and cash on delivery within Karachi. Custom styling orders may require a 50% deposit, with the balance due before delivery. Selected cards offer 0% instalment plans on orders above PKR 150,000.",
   },
   {
     q: "Do you supply trade and wholesale clients?",
-    a: "Yes. Interior designers, developers and hospitality clients receive dedicated account management, trade pricing and priority production slots. Select “Wholesale” in the form above and our trade team will contact you within one business day.",
+    a: "Yes. Boutiques, event teams and styling partners receive dedicated account management, trade pricing and priority production slots. Select “Wholesale” in the form above and our team will contact you within one business day.",
   },
 ];
 

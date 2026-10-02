@@ -101,69 +101,69 @@ const Icon = ({ name, className = "h-6 w-6", filled = false }) => (
 const HERO_ASSURANCES = ["Handcrafted in small batches", "10-year structural warranty", "White-glove delivery"];
 
 const STATS = [
-  { end: 15, suffix: "+", label: "Years of craftsmanship", note: "Building furniture since 2011" },
-  { end: 12500, suffix: "+", label: "Homes furnished", note: "Across Pakistan and abroad" },
+  { end: 15, suffix: "+", label: "Years of craftsmanship", note: "Creating looks since 2011" },
+  { end: 12500, suffix: "+", label: "Looks styled", note: "Across Pakistan and abroad" },
   { end: 98, suffix: "%", label: "Customer satisfaction", note: "From post-delivery surveys" },
-  { end: 900, suffix: "+", label: "Design projects", note: "Residential & hospitality" },
+  { end: 900, suffix: "+", label: "Collections launched", note: "For everyday wear & events" },
 ];
 
 const BENEFITS = [
   {
     icon: "leaf",
     title: "Responsibly sourced materials",
-    text: "Kiln-dried European oak, American walnut and full-grain leather from certified suppliers, with full traceability.",
+    text: "Premium fabrics, soft linings and carefully selected trims from trusted suppliers, chosen for comfort and longevity.",
   },
   {
     icon: "ruler",
-    title: "Made-to-measure customization",
-    text: "Choose dimensions, finishes and upholstery from 120+ fabrics and 18 wood tones, tailored to your room.",
+    title: "Made-to-measure styling",
+    text: "Choose fit, fabric and finishing details from a curated library of textures and tones, tailored to your look.",
   },
   {
     icon: "sofa",
-    title: "Complimentary design consultation",
-    text: "Plan layouts, palettes and proportions one-on-one with a Dresser interior designer before you commit.",
+    title: "Complimentary style consultation",
+    text: "Plan silhouettes, palettes and finishing details with a Dresser styling expert before you commit.",
   },
   {
     icon: "truck",
-    title: "White-glove delivery",
-    text: "Scheduled delivery, careful assembly and packaging removal, handled by our own trained crews.",
+    title: "Reliable delivery",
+    text: "Scheduled dispatch, careful packaging and attentive order follow-up, handled by our own trained team.",
   },
   {
     icon: "shield",
-    title: "10-year structural warranty",
-    text: "Every frame is guaranteed for a decade. If something isn’t right, we repair or replace it. No fine print.",
+    title: "10-year quality promise",
+    text: "Every piece is backed by a decade of care. If something isn’t right, we help resolve it quickly and thoughtfully.",
   },
   {
     icon: "gem",
     title: "Heirloom-grade finishing",
-    text: "Hand-sanded and finished with low-VOC oils that age gracefully and can be refreshed for years to come.",
+    text: "Hand-finished details and polished touches that age beautifully and elevate everyday wear.",
   },
 ];
 
 const VALUES = [
   {
     photo: PHOTOS.materials,
-    alt: "Craftsman sanding a solid wood surface in the Dresser workshop",
+    alt: "Craftsperson finishing fabric in the Dresser studio",
     eyebrow: "Craftsmanship 01",
-    title: "Honest materials, nothing hidden",
-    text: "We build with what lasts: solid hardwoods, natural fibres and leathers that grow more beautiful with use. If it can’t be repaired, refinished or reupholstered, it doesn’t leave our workshop.",
-    points: ["Solid hardwoods, never veneered MDF", "Full-grain leather and natural-fibre textiles", "Water-based, low-VOC finishes"],
+    title: "Thoughtful materials, nothing hidden",
+    text: "We choose fabrics and finishes that feel premium from day one and hold up beautifully over time. If it feels special in the hand and flatters in motion, it belongs in the collection.",
+    points: ["Premium fabrics and soft linings", "Comfort-first finishes", "Careful material sourcing"],
   },
   {
     photo: PHOTOS.joinery,
-    alt: "Furniture maker assembling a chair by hand",
+    alt: "Stylist cutting and shaping a new outfit pattern in the studio",
     eyebrow: "Craftsmanship 02",
-    title: "Master joinery, made by hand",
-    text: "Dovetails, mortise-and-tenon joints and hand-fitted details are the quiet difference between furniture that wobbles in five years and furniture that’s handed down in fifty.",
-    points: ["Traditional joinery in every frame", "Each piece inspected and signed by its maker", "Finished by hand in small batches"],
+    title: "Tailoring with intention",
+    text: "Every cut and detail is considered so each silhouette feels polished, easy and wearable. We keep the focus on fit, flow and ease of styling.",
+    points: ["Precision cuts in every collection", "Thoughtful finishing details", "Small-batch attention"],
   },
   {
     photo: PHOTOS.legacy,
-    alt: "Artisan carrying a finished solid wood table",
+    alt: "Designer reviewing a finished outfit in a studio setting",
     eyebrow: "Craftsmanship 03",
-    title: "Designed for generations",
-    text: "We favour timeless silhouettes over passing trends, and we stand behind them with repair, refinishing and take-back services, so your pieces stay in your home and out of landfill.",
-    points: ["Timeless, proportion-led design", "Lifetime repair and refinishing service", "Take-back programme for pre-loved pieces"],
+    title: "Designed to last beyond the season",
+    text: "We favour timeless silhouettes over passing trends and build pieces to be worn again and again, with care that keeps them feeling elevated every time.",
+    points: ["Timeless silhouettes", "Long-wear styling", "Easy care and repeat wear"],
   },
 ];
 
@@ -172,48 +172,48 @@ const TEAM = [
     photo: PHOTOS.elena,
     name: "Elena Marlowe",
     role: "Founder & Creative Director",
-    bio: "A trained interior architect, Elena sets the design language of every collection and still sketches each new piece by hand.",
+    bio: "A trained stylist and visual storyteller, Elena shapes the mood of every collection and still sketches each new idea by hand.",
   },
   {
     photo: PHOTOS.daniel,
     name: "Daniel Whitmore",
-    role: "Co-founder & Master Craftsman",
-    bio: "Third-generation joiner and head of our workshop. Daniel has personally inspected more than 9,000 Dresser pieces.",
+    role: "Co-founder & Product Lead",
+    bio: "From fit notes to finishing details, Daniel has personally reviewed more than 9,000 Dresser looks and ensures every silhouette feels considered.",
   },
   {
     photo: PHOTOS.sofia,
     name: "Sofia Reyes",
-    role: "Head of Interior Design",
-    bio: "Sofia leads our consultation studio, helping customers turn a floor plan and a feeling into a home that feels finished.",
+    role: "Head of Styling",
+    bio: "Sofia leads our styling desk, helping customers turn a moodboard and a few references into a look that feels personal and polished.",
   },
 ];
 
 const PROCESS = [
-  { step: "01", title: "Discover", text: "We learn how you live, your space, your style and your budget, in person or over video." },
-  { step: "02", title: "Design", text: "Your designer prepares layouts, material samples and a clear, itemised proposal." },
-  { step: "03", title: "Craft", text: "Our makers build your pieces to order in our Karachi workshop, typically in 6 to 8 weeks." },
-  { step: "04", title: "Finish", text: "Hand-finishing, quality inspection and protective packing before anything leaves the studio." },
-  { step: "05", title: "Deliver", text: "White-glove delivery and placement, plus a follow-up visit to make sure everything is perfect." },
+  { step: "01", title: "Discover", text: "We learn how you dress, what you love and what occasions matter most, in person or over video." },
+  { step: "02", title: "Design", text: "Our stylists prepare moodboards, fabric suggestions and a clear recommendation for your look." },
+  { step: "03", title: "Craft", text: "Our team develops each collection in our Karachi studio, typically in 6 to 8 weeks depending on custom details." },
+  { step: "04", title: "Finish", text: "Hand-finishing, quality checks and careful packaging before anything leaves the studio." },
+  { step: "05", title: "Deliver", text: "Tracked delivery and follow-up support, so your order arrives in perfect shape and on time." },
 ];
 
 const TESTIMONIALS = [
   {
-    quote: "The Alder dining table has become the heart of our home. The joinery is flawless and the team guided us through every decision. It feels like it has always belonged here.",
+    quote: "The silhouette I picked has become my everyday favourite. The fit is flawless and the styling team guided me through every detail with such ease.",
     name: "Amelia Hartley",
     place: "Karachi, PK",
-    product: "Alder Dining Table",
+    product: "Signature Kaftaan",
   },
   {
-    quote: "We furnished our entire living space with Dresser. Delivery was seamless and the quality is a step above anything we have owned. Worth every penny.",
+    quote: "I refreshed my whole wardrobe with Dresser. The delivery was seamless and every piece felt elevated, polished and easy to style.",
     name: "Marcus Chen",
     place: "Lahore, PK",
-    product: "Living Room Collection",
+    product: "Seasonal Edit",
   },
   {
-    quote: "Our designer understood our style instantly. The custom sideboard fits the alcove perfectly and the finish is absolutely stunning.",
+    quote: "Our stylist understood the mood instantly. The custom set fit perfectly and the detailing felt just right for the occasion.",
     name: "Priya Nair",
     place: "Dubai, UAE",
-    product: "Custom Sideboard",
+    product: "Custom Occasion Set",
   },
 ];
 

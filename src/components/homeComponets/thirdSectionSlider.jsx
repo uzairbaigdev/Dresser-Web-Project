@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 // Replace image, eyebrow, heading, description, ctaLabel and ctaHref
 // with your real feature content. image should be a tall portrait photo.
@@ -11,7 +12,7 @@ const slides = [
     description:
       "Hand-finished embroidery on breathable cotton — pieces are moving fast this season.",
     ctaLabel: 'Shop now',
-    ctaHref: '#',
+    ctaHref: '/shop',
   },
   {
     id: 2,
@@ -21,7 +22,7 @@ const slides = [
     description:
       'Lightweight prints designed to keep you cool without losing the details you love.',
     ctaLabel: 'Shop now',
-    ctaHref: '#',
+    ctaHref: '/shop',
   },
   {
     id: 3,
@@ -31,7 +32,7 @@ const slides = [
     description:
       "Colour-fast threads and reinforced stitching, tested the way you'll actually wear it.",
     ctaLabel: 'Shop now',
-    ctaHref: '#',
+    ctaHref: '/shop',
   },
   {
     id: 4,
@@ -41,7 +42,7 @@ const slides = [
     description:
       "The style you kept asking about is back in stock — while sizes last.",
     ctaLabel: 'Shop now',
-    ctaHref: '#',
+    ctaHref: '/shop',
   },
 ]
 
@@ -170,9 +171,9 @@ const ThirdSectionSlider = () => {
             <span className="tss__eyebrow">{activeSlide.eyebrow}</span>
             <h2 className="tss__heading">{activeSlide.heading}</h2>
             <p className="tss__description">{activeSlide.description}</p>
-            <a className="tss__cta" href={activeSlide.ctaHref}>
+            <Link className="tss__cta" to={activeSlide.ctaHref}>
               {activeSlide.ctaLabel}
-            </a>
+            </Link>
           </div>
 
           <div className="tss__dots" role="tablist" aria-label="Slide navigation">

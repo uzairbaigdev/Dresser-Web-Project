@@ -1,4 +1,3 @@
-import React from 'react'
 import Nav from '../../components/nav/nav.jsx'
 import FirstSectionSlider from '../../components/homeComponets/firstSectionSlider.jsx'
 import Products from '../../components/homeComponets/secondSectionProducts.jsx'
@@ -6,12 +5,12 @@ import ThirdSectionSlider from '../../components/homeComponets/thirdSectionSlide
 import FourthSection from '../../components/homeComponets/FourthSection.jsx'
 import Footer from '../../components/homeComponets/footer.jsx'
 
-const home = () => {
+const Home = () => {
   return (
     <div>
       <Nav />
       <FirstSectionSlider />
-      <Products/>
+      <Products />
       <ThirdSectionSlider />
       <FourthSection />
       <Footer />
@@ -19,4 +18,4 @@ const home = () => {
   )
 }
 
-export default home
+export default Home
